@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProviderCell" id="gTV-IL-0wX" customClass="ProviderCell" customModule="ValeYou_Provider" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="265" height="105"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="265" height="105"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AsD-3C-Xyk">
+                        <rect key="frame" x="5" y="5" width="255" height="95"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home-iocn-map-screen" translatesAutoresizingMaskIntoConstraints="NO" id="xP6-xC-FIq">
+                                <rect key="frame" x="10" y="17.5" width="40" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="KjV-ZY-lRp"/>
+                                    <constraint firstAttribute="width" constant="40" id="gmD-ZI-3qS"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IOS Dev Needed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvx-D6-WLN">
+                                <rect key="frame" x="65" y="12" width="180" height="19"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pin-location" translatesAutoresizingMaskIntoConstraints="NO" id="hBp-44-YNM">
+                                <rect key="frame" x="65" y="56" width="15" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="15" id="W2a-dw-8Ke"/>
+                                    <constraint firstAttribute="height" constant="19" id="d4z-go-u4a"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.5 Miles Away" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5YP-gR-7pw">
+                                <rect key="frame" x="88" y="58" width="90" height="15"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="12"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pF-Qu-Whr">
+                                <rect key="frame" x="65" y="35" width="180" height="15"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="12"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="xP6-xC-FIq" firstAttribute="leading" secondItem="AsD-3C-Xyk" secondAttribute="leading" constant="10" id="2ba-3E-B5E"/>
+                            <constraint firstItem="5YP-gR-7pw" firstAttribute="centerY" secondItem="hBp-44-YNM" secondAttribute="centerY" id="8cx-fq-TA8"/>
+                            <constraint firstItem="5YP-gR-7pw" firstAttribute="leading" secondItem="hBp-44-YNM" secondAttribute="trailing" constant="8" id="AdF-7i-VfU"/>
+                            <constraint firstAttribute="trailing" secondItem="gvx-D6-WLN" secondAttribute="trailing" constant="10" id="CK8-Ju-JIW"/>
+                            <constraint firstAttribute="trailing" secondItem="4pF-Qu-Whr" secondAttribute="trailing" constant="10" id="D6N-s2-s7r"/>
+                            <constraint firstItem="xP6-xC-FIq" firstAttribute="centerY" secondItem="AsD-3C-Xyk" secondAttribute="centerY" id="DFD-cd-52L"/>
+                            <constraint firstItem="hBp-44-YNM" firstAttribute="top" secondItem="4pF-Qu-Whr" secondAttribute="bottom" constant="6" id="FdT-ju-VhQ"/>
+                            <constraint firstAttribute="height" constant="95" id="PZr-iz-egV"/>
+                            <constraint firstItem="4pF-Qu-Whr" firstAttribute="leading" secondItem="gvx-D6-WLN" secondAttribute="leading" id="Slg-nB-h8I"/>
+                            <constraint firstItem="hBp-44-YNM" firstAttribute="leading" secondItem="xP6-xC-FIq" secondAttribute="trailing" constant="15" id="ZX6-f9-LgT"/>
+                            <constraint firstItem="gvx-D6-WLN" firstAttribute="leading" secondItem="xP6-xC-FIq" secondAttribute="trailing" constant="15" id="a54-87-805"/>
+                            <constraint firstAttribute="width" constant="255" id="gPv-33-vgd"/>
+                            <constraint firstItem="gvx-D6-WLN" firstAttribute="top" secondItem="AsD-3C-Xyk" secondAttribute="top" constant="12" id="nVK-ko-Br6"/>
+                            <constraint firstItem="4pF-Qu-Whr" firstAttribute="top" secondItem="gvx-D6-WLN" secondAttribute="bottom" constant="4" id="spX-r8-DL6"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="AsD-3C-Xyk" secondAttribute="bottom" constant="5" id="cDy-5z-xiy"/>
+                <constraint firstItem="AsD-3C-Xyk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="fJN-fV-RIv"/>
+                <constraint firstItem="AsD-3C-Xyk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="shb-U9-5H9"/>
+                <constraint firstAttribute="trailing" secondItem="AsD-3C-Xyk" secondAttribute="trailing" constant="5" id="vXh-3B-QTP"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="265" height="105"/>
+            <connections>
+                <outlet property="lblDesc" destination="4pF-Qu-Whr" id="Zu2-2W-Ri9"/>
+                <outlet property="lblDistance" destination="5YP-gR-7pw" id="6w3-mZ-ElV"/>
+                <outlet property="lblTitle" destination="gvx-D6-WLN" id="B8C-ou-haA"/>
+                <outlet property="viewBack" destination="AsD-3C-Xyk" id="MSS-1g-GPj"/>
+            </connections>
+            <point key="canvasLocation" x="286.23188405797106" y="127.56696428571428"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Pin-location" width="8" height="8"/>
+        <image name="home-iocn-map-screen" width="57" height="57"/>
+    </resources>
+</document>

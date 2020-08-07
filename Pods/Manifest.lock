@@ -1,0 +1,161 @@
+PODS:
+  - ACFloatingTextfield-Swift (1.8)
+  - Alamofire (4.9.1)
+  - AppAuth (1.4.0):
+    - AppAuth/Core (= 1.4.0)
+    - AppAuth/ExternalUserAgent (= 1.4.0)
+  - AppAuth/Core (1.4.0)
+  - AppAuth/ExternalUserAgent (1.4.0)
+  - Cosmos (21.0.0)
+  - DropDown (2.3.13)
+  - FBSDKCoreKit (7.1.1):
+    - FBSDKCoreKit/Basics (= 7.1.1)
+    - FBSDKCoreKit/Core (= 7.1.1)
+  - FBSDKCoreKit/Basics (7.1.1)
+  - FBSDKCoreKit/Core (7.1.1):
+    - FBSDKCoreKit/Basics
+  - FBSDKLoginKit (7.1.1):
+    - FBSDKLoginKit/Login (= 7.1.1)
+  - FBSDKLoginKit/Login (7.1.1):
+    - FBSDKCoreKit (~> 7.1.1)
+  - FloatRatingView (4.0)
+  - GoogleMaps (3.8.0):
+    - GoogleMaps/Maps (= 3.8.0)
+  - GoogleMaps/Base (3.8.0)
+  - GoogleMaps/Maps (3.8.0):
+    - GoogleMaps/Base
+  - GoogleSignIn (5.0.2):
+    - AppAuth (~> 1.2)
+    - GTMAppAuth (~> 1.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GTMAppAuth (1.0.0):
+    - AppAuth/Core (~> 1.0)
+    - GTMSessionFetcher (~> 1.1)
+  - GTMSessionFetcher (1.4.0):
+    - GTMSessionFetcher/Full (= 1.4.0)
+  - GTMSessionFetcher/Core (1.4.0)
+  - GTMSessionFetcher/Full (1.4.0):
+    - GTMSessionFetcher/Core (= 1.4.0)
+  - HCSStarRatingView (1.5)
+  - IQKeyboardManagerSwift (6.5.5)
+  - Kingfisher (5.13.4):
+    - Kingfisher/Core (= 5.13.4)
+  - Kingfisher/Core (5.13.4)
+  - KYDrawerController (2.1.0)
+  - lottie-ios (3.1.8)
+  - Moya (13.0.1):
+    - Moya/Core (= 13.0.1)
+  - Moya/Core (13.0.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 4.1)
+  - Nuke (8.4.1)
+  - NVActivityIndicatorView (4.8.0):
+    - NVActivityIndicatorView/Presenter (= 4.8.0)
+  - NVActivityIndicatorView/Presenter (4.8.0)
+  - PullToRefreshKit (0.8.8)
+  - QuickLayout (3.0.0)
+  - R.swift (5.2.0):
+    - R.swift.Library (~> 5.2.0)
+  - R.swift.Library (5.2.0)
+  - Result (4.1.0)
+  - RSSelectionMenu (6.1.0)
+  - SDWebImage (5.7.3):
+    - SDWebImage/Core (= 5.7.3)
+  - SDWebImage/Core (5.7.3)
+  - Socket.IO-Client-Swift (15.2.0):
+    - Starscream (~> 3.1)
+  - Starscream (3.1.1)
+  - SwiftEntryKit (1.2.3):
+    - QuickLayout (= 3.0.0)
+
+DEPENDENCIES:
+  - ACFloatingTextfield-Swift
+  - Cosmos
+  - DropDown
+  - FBSDKLoginKit
+  - FloatRatingView
+  - GoogleMaps
+  - GoogleSignIn
+  - HCSStarRatingView (~> 1.5)
+  - IQKeyboardManagerSwift
+  - Kingfisher
+  - KYDrawerController
+  - lottie-ios
+  - Moya (~> 13.0.1)
+  - Nuke
+  - NVActivityIndicatorView
+  - PullToRefreshKit
+  - R.swift
+  - RSSelectionMenu
+  - SDWebImage
+  - Socket.IO-Client-Swift (~> 15.2.0)
+  - SwiftEntryKit
+
+SPEC REPOS:
+  trunk:
+    - ACFloatingTextfield-Swift
+    - Alamofire
+    - AppAuth
+    - Cosmos
+    - DropDown
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FloatRatingView
+    - GoogleMaps
+    - GoogleSignIn
+    - GTMAppAuth
+    - GTMSessionFetcher
+    - HCSStarRatingView
+    - IQKeyboardManagerSwift
+    - Kingfisher
+    - KYDrawerController
+    - lottie-ios
+    - Moya
+    - Nuke
+    - NVActivityIndicatorView
+    - PullToRefreshKit
+    - QuickLayout
+    - R.swift
+    - R.swift.Library
+    - Result
+    - RSSelectionMenu
+    - SDWebImage
+    - Socket.IO-Client-Swift
+    - Starscream
+    - SwiftEntryKit
+
+SPEC CHECKSUMS:
+  ACFloatingTextfield-Swift: c3212cef9548ae58fa914ea1c26a2f9a4f7cd7df
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
+  Cosmos: 3dfb6e4ba48bd48b8c9aa2a77048ae11ed114f96
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  FBSDKCoreKit: b46507dc8b8cefed31d644e74d7cc30e2a715ef8
+  FBSDKLoginKit: 1a61d79e2b25e2fc0d03dccab1e34b38bbdf2546
+  FloatRatingView: bb6bdddfbeec51b1d387b4bd50abc27b4dfccd48
+  GoogleMaps: 7c8d66d70e4e8c300f43a7219d8fdaad7b325a9a
+  GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
+  GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
+  GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
+  HCSStarRatingView: 1d18f79654735514cd6f00e6d90e38cb6320dc31
+  IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
+  Kingfisher: d2279a7abece3c7f25a80cd2b7f363ca5cf3f44c
+  KYDrawerController: baad0e63b09c0cb564bd48f0f7f70f45d9176ebc
+  lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
+  Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
+  Nuke: d780e3507a86b86c589ab3cc5cd302d5456f06fb
+  NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
+  PullToRefreshKit: 7cc53e720e69f135cffa1a57784dfb534f0222ab
+  QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
+  R.swift: f58c441eb72a18702be4d13825c32f79c06fd6a0
+  R.swift.Library: 5ba4f1631300caf9a4d890186930da85d540769d
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  RSSelectionMenu: dac4fa365e4bbd95c0eccd0b6ff51a623a22a1c6
+  SDWebImage: 97351f6582ceca541ea294ba66a1fcb342a331c2
+  Socket.IO-Client-Swift: 1e3e3a1f09f3312a167f0d781eb2f383d477357c
+  Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
+  SwiftEntryKit: 340713c2e4a6662c5149629990bf1088bf5f0389
+
+PODFILE CHECKSUM: ecbd05a375b33354f68064336bd8766c800eb7ce
+
+COCOAPODS: 1.9.3

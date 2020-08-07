@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PortfolioCell" rowHeight="239" id="KGk-i7-Jjw" customClass="PortfolioCell" customModule="ValeYou_Provider" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="342" height="239"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="342" height="239"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="qnI-zT-HdL">
+                        <rect key="frame" x="20" y="15" width="302" height="140"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="140" id="97l-lS-7yb"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fl-Jt-VKk">
+                        <rect key="frame" x="252" y="25" width="25" height="25"/>
+                        <color key="backgroundColor" name="primaryColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="NZ1-j1-M60"/>
+                            <constraint firstAttribute="height" constant="25" id="Prh-zj-BuM"/>
+                        </constraints>
+                        <state key="normal" image="edit-tools-icon"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="12.5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="InR-ux-ApV">
+                        <rect key="frame" x="287" y="25" width="25" height="25"/>
+                        <color key="backgroundColor" red="0.77208095789999998" green="0.22869169710000001" blue="0.1960285306" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="1S7-YN-aqE"/>
+                            <constraint firstAttribute="height" constant="25" id="Dcd-G9-evP"/>
+                        </constraints>
+                        <state key="normal" image="delete-icon"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="12.5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Explore the production landscape" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVU-mP-o7J">
+                        <rect key="frame" x="20" y="163" width="302" height="18.5"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Lorem Ipsum is dummy text used in type setting industry in order to see the text." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zt7-av-T1J">
+                        <rect key="frame" x="20" y="189" width="302" height="29.5"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="4fl-Jt-VKk" firstAttribute="centerY" secondItem="InR-ux-ApV" secondAttribute="centerY" id="03f-kC-n9i"/>
+                    <constraint firstAttribute="trailing" secondItem="qnI-zT-HdL" secondAttribute="trailing" constant="20" id="AQJ-9t-puH"/>
+                    <constraint firstItem="Zt7-av-T1J" firstAttribute="trailing" secondItem="yVU-mP-o7J" secondAttribute="trailing" id="Amp-D4-KBV"/>
+                    <constraint firstAttribute="trailing" secondItem="InR-ux-ApV" secondAttribute="trailing" constant="30" id="Cvs-d3-fJt"/>
+                    <constraint firstItem="InR-ux-ApV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="Rxc-0q-N9t"/>
+                    <constraint firstItem="yVU-mP-o7J" firstAttribute="trailing" secondItem="qnI-zT-HdL" secondAttribute="trailing" id="Rz9-7F-V3Z"/>
+                    <constraint firstAttribute="bottom" secondItem="Zt7-av-T1J" secondAttribute="bottom" constant="20.5" id="U1z-cf-Ryg"/>
+                    <constraint firstItem="InR-ux-ApV" firstAttribute="leading" secondItem="4fl-Jt-VKk" secondAttribute="trailing" constant="10" id="UAC-9e-pbq"/>
+                    <constraint firstItem="yVU-mP-o7J" firstAttribute="top" secondItem="qnI-zT-HdL" secondAttribute="bottom" constant="8" id="eS0-oo-BFk"/>
+                    <constraint firstItem="Zt7-av-T1J" firstAttribute="top" secondItem="yVU-mP-o7J" secondAttribute="bottom" constant="7.5" id="i69-4t-CS8"/>
+                    <constraint firstItem="qnI-zT-HdL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="lAm-Z5-vJp"/>
+                    <constraint firstItem="qnI-zT-HdL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="mJN-tg-igW"/>
+                    <constraint firstItem="yVU-mP-o7J" firstAttribute="leading" secondItem="qnI-zT-HdL" secondAttribute="leading" id="pFs-ob-Kzn"/>
+                    <constraint firstItem="Zt7-av-T1J" firstAttribute="leading" secondItem="yVU-mP-o7J" secondAttribute="leading" id="qrq-fp-QII"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="imgPortfolio" destination="qnI-zT-HdL" id="5DX-RZ-b2k"/>
+                <outlet property="lblDesc" destination="Zt7-av-T1J" id="2y8-51-u4b"/>
+                <outlet property="lblTitle" destination="yVU-mP-o7J" id="VZb-Uu-DyF"/>
+            </connections>
+            <point key="canvasLocation" x="105.79710144927537" y="167.74553571428569"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="delete-icon" width="7.5" height="9.5"/>
+        <image name="edit-tools-icon" width="13" height="13"/>
+        <image name="placeholder" width="750" height="750"/>
+        <namedColor name="primaryColor">
+            <color red="0.49803921568627452" green="0.80392156862745101" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
+</document>

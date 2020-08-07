@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="55" id="KGk-i7-Jjw" customClass="LanguageCell" customModule="ValeYou_Provider" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6a-2Z-mHs">
+                        <rect key="frame" x="0.0" y="49.5" width="320" height="0.5"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="ibP-Rj-24i"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English (Basic)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXn-yt-ymd">
+                        <rect key="frame" x="20" y="18.5" width="91.5" height="13"/>
+                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fB1-nw-CGB">
+                        <rect key="frame" x="240" y="12.5" width="25" height="25"/>
+                        <color key="backgroundColor" name="primaryColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="ChL-zj-cKV"/>
+                            <constraint firstAttribute="height" constant="25" id="KUs-Am-A1i"/>
+                        </constraints>
+                        <state key="normal" image="edit-tools-icon"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="12.5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="btnActionEdit:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="jPe-Kb-UAT"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38Y-7c-z5P">
+                        <rect key="frame" x="275" y="12.5" width="25" height="25"/>
+                        <color key="backgroundColor" red="0.77208095789999998" green="0.22869169710000001" blue="0.1960285306" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="2W9-tG-Wjg"/>
+                            <constraint firstAttribute="width" constant="25" id="6tS-ky-POm"/>
+                        </constraints>
+                        <state key="normal" image="delete-icon"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="12.5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="btnActionDelete:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="oM7-yq-Gcj"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="b6a-2Z-mHs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="2Nz-nV-DPI"/>
+                    <constraint firstAttribute="bottom" secondItem="b6a-2Z-mHs" secondAttribute="bottom" id="A30-ZG-9lx"/>
+                    <constraint firstItem="fXn-yt-ymd" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Bc2-rD-sgM"/>
+                    <constraint firstAttribute="trailing" secondItem="38Y-7c-z5P" secondAttribute="trailing" constant="20" id="Fro-eB-dnt"/>
+                    <constraint firstItem="38Y-7c-z5P" firstAttribute="leading" secondItem="fB1-nw-CGB" secondAttribute="trailing" constant="10" id="OQV-ta-Dx4"/>
+                    <constraint firstItem="fXn-yt-ymd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18.5" id="SFM-Nb-1tE"/>
+                    <constraint firstItem="fB1-nw-CGB" firstAttribute="centerY" secondItem="fXn-yt-ymd" secondAttribute="centerY" id="SxI-Hw-aUQ"/>
+                    <constraint firstItem="38Y-7c-z5P" firstAttribute="centerY" secondItem="fXn-yt-ymd" secondAttribute="centerY" id="egb-7b-EUS"/>
+                    <constraint firstItem="b6a-2Z-mHs" firstAttribute="top" secondItem="fXn-yt-ymd" secondAttribute="bottom" constant="18" id="rYo-gk-6B7"/>
+                    <constraint firstAttribute="trailing" secondItem="b6a-2Z-mHs" secondAttribute="trailing" id="vWr-vM-c0y"/>
+                    <constraint firstItem="fXn-yt-ymd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="yBd-vt-Trp"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnDelete" destination="38Y-7c-z5P" id="cD6-7o-yJt"/>
+                <outlet property="btnEdit" destination="fB1-nw-CGB" id="Na1-JR-Qho"/>
+                <outlet property="lblLang" destination="fXn-yt-ymd" id="iiQ-Ad-8oa"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="102.79017857142857"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="delete-icon" width="7.5" height="9.5"/>
+        <image name="edit-tools-icon" width="13" height="13"/>
+        <namedColor name="primaryColor">
+            <color red="0.49803921568627452" green="0.80392156862745101" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
+</document>
