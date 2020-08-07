@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="vm"
+            type="com.marius.valeyou_admin.ui.activity.dashboard.profile.editprofile.EditProfileActivityVM" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/back_gradient_view"
+        android:orientation="vertical">
+
+        <include android:id="@+id/header"
+            layout="@layout/toolbar_transparent"
+            app:vm="@{vm}" />
+
+        <RelativeLayout
+            android:layout_below="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:layout_marginTop="@dimen/dp120"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp100"
+                android:background="@color/white"
+                android:layout_marginTop="@dimen/dp70"
+                android:rotation="-10"
+                android:layout_marginStart="-50dp"
+                android:layout_marginEnd="-50dp"
+                />
+
+        </RelativeLayout>
+
+
+        <FrameLayout
+            android:id="@+id/ll_picture"
+            android:layout_width="@dimen/dp95"
+            android:layout_height="@dimen/dp95"
+            android:layout_marginTop="@dimen/dp60"
+            android:layout_marginStart="@dimen/dp10"
+            android:gravity="center"
+            android:backgroundTint="?textColorTheme"
+            android:background="@drawable/doted_circle">
+
+            <com.marius.valeyou_admin.util.glide.CircleImageView
+                android:id="@+id/IMG_user_profile"
+                android:layout_width="@dimen/dp90"
+                android:layout_height="@dimen/dp90"
+               >
+            </com.marius.valeyou_admin.util.glide.CircleImageView>
+
+            <com.marius.valeyou_admin.util.glide.CircleImageView
+                android:id="@+id/img"
+                android:layout_width="@dimen/dp90"
+                android:layout_height="@dimen/dp90"
+                >
+            </com.marius.valeyou_admin.util.glide.CircleImageView>
+
+
+
+        </FrameLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_gallaryBtn"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="@dimen/dp30"
+            app:cardCornerRadius="@dimen/dp15"
+            android:layout_marginEnd="@dimen/dp5"
+            android:layout_marginBottom="@dimen/dp5"
+            android:onClick="@{v->vm.onClick(v)}"
+            android:layout_alignBottom="@+id/ll_picture"
+            app:cardBackgroundColor="?textColorTheme"
+            android:layout_alignRight="@+id/ll_picture">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_edit_white_icon"
+                android:layout_margin="@dimen/dp5"
+                />
+
+        </androidx.cardview.widget.CardView>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:fillViewport="true"
+                android:layout_below="@+id/ll_picture"
+               >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/dp15"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TextViewStyleTitleMedium"
+                        android:text="EDIT PROFILE"
+                        android:textSize="@dimen/sp30"/>
+
+                    <TextView
+                        style="@style/TextViewStyleSubTitleRegular"
+                        android:text="Experience Like Never Before"
+                        android:textColor="@color/edit_text" />
+
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/dp15"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/TextViewStyleSubTitleRegular"
+                            android:text="First Name"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/sp14"
+                            />
+
+                        <EditText
+                            android:id="@+id/et_firstName"
+                            style="@style/EditText_Regular"
+                            android:textColor="@color/edit_text"
+                            android:layout_alignParentEnd="true"
+                            android:inputType="text"
+                            android:singleLine="true"
+                            android:background="@android:color/transparent"
+
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"
+                        android:background="@color/grey_light"/>
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/dp15"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/TextViewStyleSubTitleRegular"
+                            android:text="Last Name"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/sp14"
+                            />
+
+                        <EditText
+                            android:id="@+id/et_lastname"
+                            style="@style/EditText_Regular"
+                            android:textColor="@color/edit_text"
+                            android:layout_alignParentEnd="true"
+                            android:inputType="text"
+                            android:singleLine="true"
+                            android:background="@android:color/transparent"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"
+                        android:background="@color/grey_light"/>
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/dp15"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/TextViewStyleSubTitleRegular"
+                            android:text="Email"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/sp14"
+                            />
+
+                        <EditText
+                            android:id="@+id/et_email"
+                            style="@style/EditText_Regular"
+                            android:text="smithmarsh@gmail.com"
+                            android:textColor="@color/edit_text"
+                            android:layout_alignParentEnd="true"
+                            android:inputType="textEmailAddress"
+                            android:singleLine="true"
+                            android:background="@android:color/transparent"
+                            />
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"
+                        android:background="@color/grey_light"/>
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/dp15"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/TextViewStyleSubTitleRegular"
+                            android:text="Phone Number"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/sp14"
+                            />
+
+                        <EditText
+                            android:id="@+id/et_phone"
+                            style="@style/EditText_Regular"
+                            android:text="+91 28464-23442"
+                            android:textColor="@color/edit_text"
+                            android:layout_alignParentEnd="true"
+                            android:inputType="phone"
+                            android:singleLine="true"
+                            android:background="@android:color/transparent"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"
+                        android:background="@color/grey_light"/>
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/dp15"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/TextViewStyleSubTitleRegular"
+                            android:text="Date Of Birth(dd/mm/yyyy)"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/sp14"
+                            />
+
+                        <EditText
+                            android:id="@+id/et_date_of_birth"
+                            style="@style/EditText_Regular"
+                            android:text="+91 28464-23442"
+                            android:textColor="@color/edit_text"
+                            android:layout_alignParentEnd="true"
+                            android:singleLine="true"
+                            android:background="@android:color/transparent"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"
+                        android:background="@color/grey_light"/>
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/dp15"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/TextViewStyleSubTitleRegular"
+                            android:text="Description"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/sp14"
+                            />
+
+                        <EditText
+                            android:id="@+id/et_about"
+                            style="@style/EditText_Regular"
+                            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries"
+                            android:textColor="@color/edit_text"
+                            android:layout_alignParentEnd="true"
+                            android:background="@android:color/transparent"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"
+                        android:background="@color/grey_light"/>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp15"
+                        android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/TextViewStyleSubTitleRegular"
+                            android:text="House Number"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/sp14"
+                            />
+
+                        <EditText
+                            android:id="@+id/et_house_number"
+                            style="@style/EditText_Regular"
+                            android:textColor="@color/edit_text"
+                            android:layout_alignParentEnd="true"
+                            android:singleLine="true"
+                            android:background="@android:color/transparent"
+                            />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp1"
+                            android:layout_marginRight="5dp"
+                            android:background="@color/grey_light"/>
+
+                    </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                style="@style/TextViewStyleSubTitleRegular"
+                                android:text="Apartment"
+                                android:textColor="@color/grey"
+                                android:textSize="@dimen/sp14"
+                                />
+
+                            <EditText
+                                android:id="@+id/et_apartment"
+                                style="@style/EditText_Regular"
+                                android:textColor="@color/edit_text"
+                                android:layout_alignParentEnd="true"
+                                android:singleLine="true"
+                                android:background="@android:color/transparent"
+                                />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/dp1"
+                                android:layout_marginLeft="5dp"
+                                android:background="@color/grey_light"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/dp15"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/TextViewStyleSubTitleRegular"
+                            android:text="Street"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/sp14"
+                            />
+
+                        <EditText
+                            android:id="@+id/et_street"
+                            style="@style/EditText_Regular"
+                            android:text="+91 28464-23442"
+                            android:singleLine="true"
+                            android:textColor="@color/edit_text"
+                            android:layout_alignParentEnd="true"
+                            android:background="@android:color/transparent"
+                            />
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"
+                        android:background="@color/grey_light"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp15"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                style="@style/TextViewStyleSubTitleRegular"
+                                android:text="Zip Code"
+                                android:textColor="@color/grey"
+                                android:textSize="@dimen/sp14"
+                                />
+
+                            <EditText
+                                android:id="@+id/et_zip_code"
+                                style="@style/EditText_Regular"
+                                android:singleLine="true"
+                                android:textColor="@color/edit_text"
+                                android:layout_alignParentEnd="true"
+                                android:background="@android:color/transparent"
+                                />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/dp1"
+                                android:layout_marginRight="5dp"
+                                android:background="@color/grey_light"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                style="@style/TextViewStyleSubTitleRegular"
+                                android:text="City"
+                                android:textColor="@color/grey"
+                                android:textSize="@dimen/sp14"
+                                />
+
+                            <EditText
+                                android:id="@+id/et_city"
+                                style="@style/EditText_Regular"
+                                android:singleLine="true"
+                                android:textColor="@color/edit_text"
+                                android:layout_alignParentEnd="true"
+                                android:background="@android:color/transparent"
+                                />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/dp1"
+                                android:layout_marginLeft="5dp"
+                                android:background="@color/grey_light"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                       android:layout_marginTop="@dimen/dp15"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/TextViewStyleSubTitleRegular"
+                            android:text="State"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/sp14"
+                            />
+
+                        <EditText
+                            android:id="@+id/et_state"
+                            style="@style/EditText_Regular"
+                            android:textColor="@color/edit_text"
+                            android:layout_alignParentEnd="true"
+                            android:singleLine="true"
+                            android:background="@android:color/transparent"
+                            />
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"
+                        android:layout_marginBottom="@dimen/dp30"
+                        android:background="@color/grey_light"/>
+
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+    </RelativeLayout>
+
+</layout>

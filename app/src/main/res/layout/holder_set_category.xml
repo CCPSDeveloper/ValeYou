@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.marius.valeyou_admin.data.beans.categoriesBean.CategoryDataBean" />
+
+        <variable
+            name="callback"
+            type="com.marius.valeyou_admin.ui.fragment.home.FilterCatAdapter.CheckCallback"/>
+    </data>
+
+    <LinearLayout
+        android:id="@+id/ll_items"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:id="@+id/catCheck"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sfpro_regular"
+            android:textSize="@dimen/sp12"
+            android:focusableInTouchMode="false"
+            android:focusable="false"
+            android:text="@{bean.name}"
+
+            android:textColor="@color/grey"/>
+    </LinearLayout>
+</layout>

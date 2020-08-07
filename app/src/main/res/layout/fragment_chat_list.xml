@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="vm"
+            type="com.marius.valeyou_admin.ui.fragment.message.ChatListFragmentVM" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/back_gradient_view">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:layout_marginTop="@dimen/dp120"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp100"
+                android:background="@color/white"
+                android:layout_marginTop="@dimen/dp70"
+                android:rotation="-10"
+                android:layout_marginStart="-50dp"
+                android:layout_marginEnd="-50dp"
+                />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/toolbar_height"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/rv_chat_list"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                android:padding="@dimen/dp5" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

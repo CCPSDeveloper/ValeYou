@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="vm"
+            type="com.marius.valeyou_admin.ui.activity.signup.signuptwo.SignupTwoActivityVM" />
+    </data>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:paddingBottom="@dimen/dp30"
+       >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp170"
+            android:src="@drawable/login_top_icon"
+            android:scaleType="fitXY"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp180">
+
+            <ImageView
+                android:layout_width="@dimen/dp120"
+                android:layout_height="@dimen/dp80"
+                android:src="@drawable/app_logo"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/dp40"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_login"
+            android:layout_below="@+id/iv_top"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:padding="@dimen/dp10">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp50"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextLabel"
+                android:layout_margin="@dimen/dp5">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_age"
+                    style="@style/EditText_Regular"
+                    android:focusable="false"
+                    android:editable="false"
+                    android:inputType="textEmailAddress"
+                    android:hint="@string/age"
+                    android:onClick="@{(v)->vm.onClick(v)}"
+                     />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextLabel"
+                android:layout_margin="@dimen/dp5">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_house_number"
+                    style="@style/EditText_Regular"
+                    android:inputType="textEmailAddress"
+                    android:hint="House Number"
+                    android:paddingEnd="@dimen/dp10"
+                    android:text="" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextLabel"
+                    android:layout_margin="@dimen/dp5">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_appartment_number"
+                        style="@style/EditText_Regular"
+                        android:inputType="textEmailAddress"
+                        android:hint="Apartment"
+                        android:paddingEnd="@dimen/dp10"
+                        android:text="" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextLabel"
+                android:layout_margin="@dimen/dp5">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_street"
+                    style="@style/EditText_Regular"
+                    android:inputType="textEmailAddress"
+                    android:hint="Street"
+                    android:paddingEnd="@dimen/dp10"
+                    android:text="" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextLabel"
+                    android:layout_margin="@dimen/dp5">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_zip_code"
+                        style="@style/EditText_Regular"
+                        android:inputType="textEmailAddress"
+                        android:hint="Zip Code"
+                        android:paddingEnd="@dimen/dp10"
+                        android:text="" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextLabel"
+                    android:layout_margin="@dimen/dp5">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_city"
+                        style="@style/EditText_Regular"
+                        android:inputType="textEmailAddress"
+                        android:hint="City*"
+                        android:paddingEnd="@dimen/dp10"
+                        android:text="" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextLabel"
+                android:layout_margin="@dimen/dp5">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_state"
+                    style="@style/EditText_Regular"
+                    android:inputType="textEmailAddress"
+                    android:hint="State*"
+                    android:paddingEnd="@dimen/dp10"
+                    android:text="" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextLabel"
+                android:layout_margin="@dimen/dp5">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_description"
+                    style="@style/EditText_Regular"
+                    android:inputType="textEmailAddress"
+                    android:hint="Description"
+                    android:paddingEnd="@dimen/dp10"
+                    android:text="" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnSignup"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp40"
+                android:layout_gravity="center_vertical"
+                style="@style/RectangleButtonStyle"
+                android:onClick="@{(v)->vm.onClick(v)}"
+                android:text="@string/next"
+                android:layout_margin="@dimen/dp5"
+                android:textColor="@color/white"
+                android:foreground="?selectableItemBackground"
+                android:textSize="@dimen/sp14" />
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:onClick="@{()->vm.onBack()}"
+            android:foreground="?selectableItemBackground"
+            android:layout_width="@dimen/dp50"
+            android:layout_height="@dimen/dp50"
+            android:layout_marginTop="@dimen/dp24"
+            android:src="@drawable/ic_back_icon"
+            android:padding="@dimen/dp15"/>
+
+    </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="300dp"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</layout>

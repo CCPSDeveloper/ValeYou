@@ -1,0 +1,82 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_name">valeyou provider</string>
+    <string name="error_found">Error</string>
+    <string name="network_error">Network error</string>
+    <string name="space"> </string>
+
+
+    <!-- login signup -->
+    <string name="signup">Sign Up With Email</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="log_in">Login</string>
+    <string name="forgot_password"><u>Forgot Password?</u></string>
+    <string name="forgot_password_title">Forgot Password?</string>
+    <string name="remember_me">Remember me</string>
+    <string name="password">Password*</string>
+    <string name="email_id">Email Id</string>
+    <string name="wait">Please wait...</string>
+    <string name="sign_in">Sign In</string>
+    <string name="have_an_account">Have an account?</string>
+    <string name="email">Email*</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="first_name">First Name*</string>
+    <string name="last_name">Last Name*</string>
+    <string name="phone">Phone*</string>
+    <string name="submit">Submit</string>
+    <string name="temporary_password_will_be_send_on_your_registered_email_id">Temporary password will be send on your registered email id</string>
+    <string name="home">Home</string>
+    <string name="mym">myM</string>
+    <string name="products">Products</string>
+    <string name="restaurant">Restaurant</string>
+    <string name="more">More</string>
+    <string name="back_press">Back press again for exit</string>
+
+
+    <string name="next">Next</string>
+    <string name="get_started">Get Started</string>
+    <string name="welcome_back_guy">Welcome back, Guy!</string>
+    <string name="facebook">Facebook</string>
+    <string name="google">Google</string>
+    <string name="experience_like_never_before">Experience Like Never Before</string>
+    <string name="confirm_password">Confirm Password*</string>
+    <string name="about_forget_pass">Please enter your email below to receive\nyou password reset instructions</string>
+    <string name="recover_details">Reset code was sent to your email. Please enter\nthe code and create new password.</string>
+    <string name="code">Code</string>
+    <string name="change_password">Change Password</string>
+    <string name="account">Account</string>
+    <string name="age">Date Of Birth*</string>
+    <string name="address">Address</string>
+    <string name="about">About</string>
+    <string name="slect_resource">Select Category</string>
+    <string name="my_services">My Services</string>
+    <string name="ok">Ok</string>
+    <string name="languages">Languages</string>
+    <string name="education">Education</string>
+    <string name="experience">Experience</string>
+    <string name="edit_languages"> Edit Languages</string>
+    <string name="certificate">Add Certificate</string>
+    <string name="businesshours">Business Hours</string>
+    <string name="portfolio">Portfolio</string>
+    <string name="identity">Upload Identity</string>
+    <string name="deactivate_account">Deactivate Account</string>
+    <string name="cancel">Cancel</string>
+    <string name="deactivate_description">If you are deactivating your account, make sure that you still have access to the email address you use to login. That way you can easily reactivate your accountby logging back in.</string>
+    <string name="delete_description">Deleting your account will remove all of your information from our database.</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="logout_account">Logout</string>
+    <string name="plz_wait">Please Wait</string>
+    <string name="logout_text">Are you sure you want to logout ? </string>
+    <string name="start_job">Are you sure ? </string>
+    <string name="end_job">Are you sure you want to end your job ? </string>
+    <string name="review_txt">Review </string>
+    <string name="time_spend_txt">Total Time Spend </string>
+    <string name="otp_text">OTP Verification</string>
+    <string name="policy_terms">"I accepts the <a href='https://www.anyurl.com/privacy'>Privacy Policy</a> and <a href='https://www.anyurl.com/tos'>Terms &amp; Conditions.</a>"</string>
+    <!--  -->
+
+
+    <string name="facebook_app_id">2617191828542329</string>
+    <string name="fb_login_protocol_scheme">fb2617191828542329</string>
+
+
+</resources>
