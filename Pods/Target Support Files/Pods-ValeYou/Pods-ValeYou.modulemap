@@ -1,0 +1,6 @@
+framework module Pods_ValeYou {
+  umbrella header "Pods-ValeYou-umbrella.h"
+
+  export *
+  module * { export * }
+}

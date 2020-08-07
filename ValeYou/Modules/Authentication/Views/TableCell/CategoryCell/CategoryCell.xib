@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" rowHeight="76" id="KGk-i7-Jjw" customClass="CategoryCell" customModule="ValeYou_Provider" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="323" height="86"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="323" height="86"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sd7-39-Vxy">
+                        <rect key="frame" x="10" y="8" width="303" height="70"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Build Your Own Job" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Oa-3j-i8J">
+                                <rect key="frame" x="58" y="10" width="207" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="42" id="jo2-au-t7f"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
+                                <color key="textColor" red="0.60392156862745094" green="0.60392156862745094" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="courior-taxi-icon" translatesAutoresizingMaskIntoConstraints="NO" id="0Rm-pT-PUC">
+                                <rect key="frame" x="8" y="12" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="hf7-5X-Ckx"/>
+                                    <constraint firstAttribute="height" constant="40" id="mbD-Eu-dlm"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="m7I-QE-HLb">
+                                <rect key="frame" x="275" y="24" width="16" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="JiC-ff-5u2"/>
+                                    <constraint firstAttribute="width" constant="16" id="qCT-NF-0Iy"/>
+                                </constraints>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rzD-Rx-jdG">
+                                <rect key="frame" x="8" y="62" width="287" height="0.0"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="pTQ-30-PCA"/>
+                                </constraints>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="8Oa-3j-i8J" firstAttribute="leading" secondItem="0Rm-pT-PUC" secondAttribute="trailing" constant="10" id="2Um-ob-dZr"/>
+                            <constraint firstItem="rzD-Rx-jdG" firstAttribute="leading" secondItem="Sd7-39-Vxy" secondAttribute="leading" constant="8" id="3wD-BO-YpM"/>
+                            <constraint firstItem="8Oa-3j-i8J" firstAttribute="top" secondItem="Sd7-39-Vxy" secondAttribute="top" constant="10" id="7s0-sO-BzI"/>
+                            <constraint firstItem="0Rm-pT-PUC" firstAttribute="leading" secondItem="Sd7-39-Vxy" secondAttribute="leading" constant="8" id="DdR-gR-L2L"/>
+                            <constraint firstItem="m7I-QE-HLb" firstAttribute="centerY" secondItem="8Oa-3j-i8J" secondAttribute="centerY" id="I6N-9f-ZqO"/>
+                            <constraint firstAttribute="trailing" secondItem="m7I-QE-HLb" secondAttribute="trailing" constant="12" id="KL0-OW-kIT"/>
+                            <constraint firstAttribute="bottom" secondItem="rzD-Rx-jdG" secondAttribute="bottom" constant="8" id="Mrn-NK-hcI"/>
+                            <constraint firstAttribute="trailing" secondItem="rzD-Rx-jdG" secondAttribute="trailing" constant="8" id="RWp-gY-fNO"/>
+                            <constraint firstItem="0Rm-pT-PUC" firstAttribute="centerY" secondItem="8Oa-3j-i8J" secondAttribute="centerY" id="aka-Wx-OnF"/>
+                            <constraint firstItem="rzD-Rx-jdG" firstAttribute="top" secondItem="8Oa-3j-i8J" secondAttribute="bottom" constant="8" id="but-Hg-yNf"/>
+                            <constraint firstItem="m7I-QE-HLb" firstAttribute="leading" secondItem="8Oa-3j-i8J" secondAttribute="trailing" constant="10" id="pcl-E5-Epy"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="Sd7-39-Vxy" secondAttribute="bottom" constant="8" id="3ZM-Wp-pUK"/>
+                    <constraint firstItem="Sd7-39-Vxy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="ELC-w9-uSU"/>
+                    <constraint firstAttribute="trailing" secondItem="Sd7-39-Vxy" secondAttribute="trailing" constant="10" id="Mtx-77-qbu"/>
+                    <constraint firstItem="Sd7-39-Vxy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="QgL-Xd-xBT"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="backView" destination="Sd7-39-Vxy" id="fnf-8D-uhS"/>
+                <outlet property="imgArrow" destination="m7I-QE-HLb" id="bJ2-IK-8ls"/>
+                <outlet property="imgCategory" destination="0Rm-pT-PUC" id="fFH-4A-gqc"/>
+                <outlet property="lblCategory" destination="8Oa-3j-i8J" id="tvd-bm-tHy"/>
+                <outlet property="tblHeight" destination="pTQ-30-PCA" id="hEO-AK-C14"/>
+                <outlet property="tblSubCategory" destination="rzD-Rx-jdG" id="989-Ip-ddI"/>
+            </connections>
+            <point key="canvasLocation" x="138.40579710144928" y="177.45535714285714"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="courior-taxi-icon" width="65" height="50"/>
+        <image name="down-arrow" width="32" height="32"/>
+    </resources>
+</document>
