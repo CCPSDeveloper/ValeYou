@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+
+
+    <external-path name="my_images" path="Android/data/com.marius.arvind.cabbies/files/Pictures" />
+    <!--<external-path name="sdcard" path="."/>-->
+</paths>

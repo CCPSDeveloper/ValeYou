@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="check"
+            type="boolean" />
+
+        <variable
+            name="bean"
+            type="com.marius.valeyou.data.beans.signup.SignupData" />
+
+        <variable
+            name="vm"
+            type="com.marius.valeyou.ui.fragment.more.profile.editprofile.EditProfileActivityVM" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/back_gradient_view"
+        android:orientation="vertical">
+
+        <include android:id="@+id/header"
+            layout="@layout/toolbar_layout"
+            app:vm="@{vm}" />
+
+        <RelativeLayout
+            android:layout_below="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:layout_marginTop="@dimen/dp120"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp100"
+                android:background="@color/white"
+                android:layout_marginTop="@dimen/dp70"
+                android:rotation="-10"
+                android:layout_marginStart="-50dp"
+                android:layout_marginEnd="-50dp"
+                />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_picture"
+            android:layout_width="@dimen/dp100"
+            android:layout_height="@dimen/dp100"
+            android:layout_marginTop="@dimen/dp60"
+            android:layout_marginStart="@dimen/dp10"
+            android:gravity="center"
+            android:backgroundTint="?textColorTheme"
+            android:background="@drawable/back_round_corner5">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/dp90"
+                android:layout_height="@dimen/dp90"
+                app:cardCornerRadius="@dimen/dp45"
+                app:cardBackgroundColor="@color/grey_light">
+
+                <ImageView
+                    android:id="@+id/iv_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:image_url="@{bean.image}"
+                    android:scaleType="centerCrop"/>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_image"
+            android:onClick="@{v->vm.onClick(v)}"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="@dimen/dp30"
+            app:cardCornerRadius="@dimen/dp15"
+            android:layout_marginEnd="@dimen/dp5"
+            android:layout_marginBottom="@dimen/dp5"
+            android:layout_alignBottom="@+id/ll_picture"
+            app:cardBackgroundColor="?textColorTheme"
+            android:layout_alignRight="@+id/ll_picture">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_edit_white_icon"
+                android:layout_margin="@dimen/dp5"
+                />
+
+        </androidx.cardview.widget.CardView>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:fillViewport="true"
+                android:layout_below="@+id/ll_picture"
+                android:overScrollMode="never"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/dp15"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TextViewStyleTitleMedium"
+                        android:text="EDIT PROFILE"
+                        android:textSize="@dimen/sp30"/>
+
+                    <TextView
+                        style="@style/TextViewStyleSubTitleRegular"
+                        android:text="Experience Like Never Before"
+                        android:textColor="@color/edit_text" />
+
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/dp15"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/TextViewStyleSubTitleRegular"
+                            android:text="First Name"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/sp14"
+                            />
+
+                        <EditText
+                            android:id="@+id/et_first_name"
+                            style="@style/EditText_Regular"
+                            android:text='@{bean.firstName}'
+                            android:textColor="@color/edit_text"
+                            android:layout_alignParentEnd="true"
+                            android:inputType="text"
+                            android:background="@android:color/transparent"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"
+                        android:background="@color/grey_light"/>
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/dp15"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/TextViewStyleSubTitleRegular"
+                            android:text="Last Name"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/sp14"
+                            />
+
+                        <EditText
+                            android:id="@+id/et_last_name"
+                            style="@style/EditText_Regular"
+                            android:text="@{bean.lastName}"
+                            android:textColor="@color/edit_text"
+                            android:layout_alignParentEnd="true"
+                            android:inputType="textEmailAddress"
+                            android:background="@android:color/transparent"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"
+                        android:background="@color/grey_light"/>
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/dp15"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/TextViewStyleSubTitleRegular"
+                            android:text="Email"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/sp14"
+                            />
+
+                        <EditText
+                            android:id="@+id/et_email"
+                            style="@style/EditText_Regular"
+                            android:text="@{bean.email}"
+                            android:focusable="false"
+                            android:textColor="@color/edit_text"
+                            android:layout_alignParentEnd="true"
+                            android:inputType="textEmailAddress"
+                            android:background="@android:color/transparent"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"
+                        android:background="@color/grey_light"/>
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/dp15"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/TextViewStyleSubTitleRegular"
+                            android:text="Phone Number"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/sp14"
+                            />
+
+                        <EditText
+                            android:id="@+id/et_phone"
+                            style="@style/EditText_Regular"
+                            android:text="@{bean.phone}"
+                            android:textColor="@color/edit_text"
+                            android:layout_alignParentEnd="true"
+                            android:inputType="phone"
+                            android:background="@android:color/transparent"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"
+                        android:background="@color/grey_light"/>
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/dp15"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/TextViewStyleSubTitleRegular"
+                            android:text="DoB"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/sp14"
+                            />
+
+                        <EditText
+                            android:id="@+id/et_age"
+                            android:onClick="@{v->vm.onClick(v)}"
+                            style="@style/EditText_Regular"
+                            android:textColor="@color/edit_text"
+                            android:layout_alignParentEnd="true"
+                            android:inputType="number"
+                            android:focusable="false"
+                            android:background="@android:color/transparent"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"
+                        android:background="@color/grey_light"/>
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/dp15"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/TextViewStyleSubTitleRegular"
+                            android:text="Address"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/sp14"
+                            />
+
+                        <EditText
+                            android:id="@+id/et_address"
+                            style="@style/EditText_Regular"
+                            android:text="@{bean.location}"
+                            android:textColor="@color/edit_text"
+                            android:layout_alignParentEnd="true"
+                            android:inputType="text"
+                            android:background="@android:color/transparent"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"
+                        android:background="@color/grey_light"/>
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/dp15"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/TextViewStyleSubTitleRegular"
+                            android:text="City"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/sp14"
+                            />
+
+                        <EditText
+                            android:id="@+id/et_city"
+                            style="@style/EditText_Regular"
+                            android:text="@{bean.city}"
+                            android:textColor="@color/edit_text"
+                            android:layout_alignParentEnd="true"
+                            android:inputType="text"
+                            android:background="@android:color/transparent"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"
+                        android:background="@color/grey_light"/>
+
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/dp15"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/TextViewStyleSubTitleRegular"
+                            android:text="State"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/sp14"
+                            />
+
+                        <EditText
+                            android:id="@+id/et_state"
+                            style="@style/EditText_Regular"
+                            android:text="@{bean.state}"
+                            android:textColor="@color/edit_text"
+                            android:layout_alignParentEnd="true"
+                            android:inputType="text"
+                            android:background="@android:color/transparent"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp1"
+                        android:background="@color/grey_light"/>
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/dp15"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/TextViewStyleSubTitleRegular"
+                            android:text="About Us"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/sp14"
+                            />
+
+                        <EditText
+                            android:id="@+id/et_about"
+                            style="@style/EditText_Regular"
+                            android:text="@{bean.description}"
+                            android:textColor="@color/edit_text"
+                            android:layout_alignParentEnd="true"
+                            android:background="@android:color/transparent"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.Large.ThreeBounce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="@{check?View.VISIBLE:View.GONE}"
+            app:SpinKit_Color="?textColorTheme" />
+
+    </RelativeLayout>
+
+</layout>

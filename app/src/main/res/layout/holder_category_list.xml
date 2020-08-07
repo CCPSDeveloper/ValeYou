@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="bean"
+            type="com.marius.valeyou.data.beans.respbean.CategoryListBean" />
+
+        <variable
+            name="callback"
+            type="com.marius.valeyou.ui.activity.selectcategory.CategoryAdapter.ProductCallback" />
+    </data>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_item"
+        android:onClick="@{v->callback.onItemClick(v,bean)}"
+        android:foreground="?selectableItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/dp10"
+        android:layout_margin="@dimen/dp5">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp10">
+
+                <ImageView
+                    android:id="@+id/iv_icon"
+                    android:layout_width="@dimen/dp40"
+                    android:layout_height="@dimen/dp40"
+                    android:padding="@dimen/dp5"
+                    app:image_url="@{bean.image}"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    style="@style/TextViewStyleSubTitleRegular"
+                    android:text="@{bean.name}"
+                    android:layout_toRightOf="@+id/iv_icon"
+                    android:layout_centerVertical="true"
+                    android:paddingStart="@dimen/dp10"
+                    android:textColor="@color/edit_text"
+                    android:drawableRight="@drawable/ic_drop_down_iocn" />
+
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_sub_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:visibility="@{bean.type==1?View.VISIBLE:View.GONE}"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

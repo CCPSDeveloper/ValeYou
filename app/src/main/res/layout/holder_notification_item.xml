@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="bean"
+            type="com.marius.valeyou.data.beans.respbean.GetNotificationList" />
+
+        <variable
+            name="callback"
+            type="com.marius.valeyou.di.base.adapter.SimpleRecyclerViewAdapter.SimpleCallback" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_read"
+            style="@style/TextViewStyleSubTitleRegular"
+            android:text="Mark as read"
+            android:foreground="?selectableItemBackground"
+            android:onClick="@{v->callback.onItemClick(v,bean)}"
+            android:visibility='@{bean.isSeen.equalsIgnoreCase("1")?View.GONE:View.VISIBLE}'
+            android:layout_alignParentEnd="true"
+            android:padding="@dimen/dp10"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_items"
+            android:layout_below="@+id/tv_read"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?selectableItemBackground"
+            android:onClick="@{v->callback.onItemClick(v,bean)}"
+            android:layout_marginBottom="@dimen/dp5">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="@dimen/dp60"
+                    android:layout_height="@dimen/dp60"
+                    app:cardCornerRadius="@dimen/dp30"
+                    android:layout_margin="@dimen/dp10">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/grey_light"
+                        android:scaleType="centerCrop"
+                        app:image_url="@{bean.providerImage}"
+                        />
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/dp5"
+                    android:paddingBottom="@dimen/dp5"
+                    android:paddingEnd="@dimen/dp10">
+
+                    <TextView
+                        style="@style/TextViewStyleSubTitleRegular"
+                        android:text='@{bean.firstName+" "+bean.lastName}'
+                        android:textColor="@color/black"
+                        />
+                    <TextView
+                        style="@style/TextViewStyleSubTitleRegular"
+                        android:text="@{bean.message}"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/sp12"
+                        />
+
+                    <TextView
+                        style="@style/TextViewStyleSubTitleRegular"
+                        android:text="2 Day Ago"
+                        android:textColor="@color/edit_text"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:textSize="@dimen/sp12"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+</layout>

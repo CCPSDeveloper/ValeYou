@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="vm"
+            type="com.marius.valeyou.ui.fragment.myjob.jobdetails.invoice.pyment.PaymentActivityVM" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            style="@style/TextViewStyleSubTitleRegular"
+            android:drawableLeft="@drawable/ic_visa_icon"
+            android:padding="@dimen/dp10"
+            android:gravity="center_vertical"
+            android:drawablePadding="@dimen/dp10"
+            android:textColor="@color/grey"
+            android:text="Visa Card"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            style="@style/TextViewStyleSubTitleRegular"
+            android:drawableLeft="@drawable/ic_visa_icon"
+            android:padding="@dimen/dp10"
+            android:gravity="center_vertical"
+            android:drawablePadding="@dimen/dp10"
+            android:textColor="@color/grey"
+            android:text="Debit Card"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            style="@style/TextViewStyleSubTitleRegular"
+            android:drawableLeft="@drawable/ic_paypal_icon"
+            android:padding="@dimen/dp10"
+            android:gravity="center_vertical"
+            android:drawablePadding="@dimen/dp10"
+            android:textColor="@color/grey"
+            android:text="Paypal"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            style="@style/TextViewStyleSubTitleRegular"
+            android:drawableLeft="@drawable/ic_add_new_card_icon"
+            android:padding="@dimen/dp10"
+            android:gravity="center_vertical"
+            android:drawablePadding="@dimen/dp10"
+            android:textColor="@color/grey"
+            android:text="Add New Card"/>
+
+    </LinearLayout>
+
+</layout>
