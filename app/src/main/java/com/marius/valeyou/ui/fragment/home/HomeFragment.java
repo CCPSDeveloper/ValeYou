@@ -283,7 +283,7 @@ public class HomeFragment extends AppFragment<FragmentHomeBinding, HomeFragmentV
                     case SUCCESS:
                         nearMes = resource.data;
                         adapter.setList(resource.data);
-                        adapterList.setList(resource.data);
+                       setRecyclerViewList(resource.data);
                         setMarkerOnMap(resource.data);
                         break;
                     case ERROR:
@@ -378,7 +378,7 @@ public class HomeFragment extends AppFragment<FragmentHomeBinding, HomeFragmentV
 
         setBottomsheet();
         setRecyclerView();
-        setRecyclerViewList();
+
         setFilterRecycler();
         if (nearMes != null) {
             adapter.setList(nearMes);
@@ -541,10 +541,18 @@ public class HomeFragment extends AppFragment<FragmentHomeBinding, HomeFragmentV
         }
     });
 
-    private void setRecyclerViewList() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        binding.rvListData.setLayoutManager(layoutManager);
-        binding.rvListData.setAdapter(adapterList);
+    private void setRecyclerViewList(List<ProviderNearMe> list) {
+        if (list.size()>0) {
+            binding.txtNoRecord.setVisibility(View.GONE);
+            binding.rvListData.setVisibility(View.VISIBLE);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+            binding.rvListData.setLayoutManager(layoutManager);
+            binding.rvListData.setAdapter(adapterList);
+            adapterList.setList(list);
+        }else{
+            binding.txtNoRecord.setVisibility(View.VISIBLE);
+            binding.rvListData.setVisibility(View.GONE);
+        }
     }
 
     SimpleRecyclerViewAdapter<ProviderNearMe, HolderListItemsBinding> adapterList = new SimpleRecyclerViewAdapter(R.layout.holder_list_items, BR.bean, new SimpleRecyclerViewAdapter.SimpleCallback<ProviderNearMe>() {

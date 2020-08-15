@@ -60,7 +60,7 @@ public class ForgotPasswordActivity extends AppActivity<ActivityForgotpasswordBi
                     }else if (!binding.etEmail.getText().toString().trim().matches(Constants.emailPattern)){
                         viewModel.error.setValue("Enter valid email");
                     } else{
-                        vm.forgetPassword(binding.etEmail.getText().toString());
+                        vm.forgetPassword(binding.etEmail.getText().toString().trim());
                     }
                     break;
             }
@@ -79,11 +79,14 @@ public class ForgotPasswordActivity extends AppActivity<ActivityForgotpasswordBi
                         break;
                     case WARN:
                         binding.setCheck(false);
+
                         vm.warn.setValue(resource.message);
                         break;
                     case ERROR:
                         binding.setCheck(false);
-                        vm.error.setValue(resource.message);
+                        if (resource.message.equalsIgnoreCase("bad request")){
+                            vm.error.setValue("Email not registered");
+                        }
                         break;
                 }
             }

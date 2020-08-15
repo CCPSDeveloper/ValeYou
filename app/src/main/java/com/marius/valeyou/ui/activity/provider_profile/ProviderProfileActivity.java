@@ -37,6 +37,7 @@ public class ProviderProfileActivity extends AppActivity<ActivityProviderProfile
     private static final String PROVIDER_FAV = "fav";
     private int isFav = 0;
     boolean check = false;
+    ProviderDetails modelData;
 
     public static Intent newIntent(Activity activity, int provider_id, int fav) {
         Intent intent = new Intent(activity, ProviderProfileActivity.class);
@@ -140,6 +141,11 @@ public class ProviderProfileActivity extends AppActivity<ActivityProviderProfile
                         break;
                     case R.id.b_message:
                         Intent intent1 = ChatActivity.newIntent(ProviderProfileActivity.this);
+                        intent1.putExtra("comeFrom","profile");
+                        intent1.putExtra("id",modelData.getId());
+                        intent1.putExtra("image",modelData.getImage());
+                        intent1.putExtra("name",modelData.getFirstName()+" "+modelData.getLastName());
+
                         startActivity(intent1);
                         break;
 
@@ -165,6 +171,7 @@ public class ProviderProfileActivity extends AppActivity<ActivityProviderProfile
                         break;
                     case SUCCESS:
                         binding.setCheck(false);
+                         modelData = resource.data;
                         binding.setProfile(resource.data);
                         if (resource.data.getProviderLanguage().size()>0) {
                             binding.rvLanguage.setVisibility(View.VISIBLE);

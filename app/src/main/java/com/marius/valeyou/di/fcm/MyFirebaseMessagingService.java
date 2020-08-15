@@ -52,7 +52,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private void sendNotification(Map<String,String> messageBody) {
         try {
-            String messge = new JSONObject(messageBody).toString();
+            String messge = (String) new JSONObject(messageBody).get("body");
             Gson gson = new Gson();
             NotificationPojo notificationPojo = gson.fromJson(messge, NotificationPojo.class);
             if (!NotificationUtils.isAppIsInBackground(getApplicationContext())) {
@@ -60,9 +60,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 notificationUtils.playNotificationSound();
             } else {
                 Intent resultIntent = new Intent(getApplicationContext(), WelcomeActivity.class);
-                resultIntent.putExtra("notificationPojo", notificationPojo);
                 if (true) {
-                    sendNotification(getApplicationContext(),getString(R.string.app_name), notificationPojo.getMessage()," ", resultIntent);
+                    sendNotification(getApplicationContext(),notificationPojo.getTitle(), notificationPojo.getMessage()," ", resultIntent);
                 } else {
 
                 }
@@ -81,7 +80,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         notificationUtils.showNotificationMessage(title, message, timeStamp, intent);
     }
 
-    private void sendNotification(Context context, String title, NotificationPojo.Message message, String timeStamp, Intent intent) {
+    private void sendNotification(Context context, String title, String message, String timeStamp, Intent intent) {
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);
 
@@ -92,7 +91,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                       /*  .setSmallIcon(R.drawable.app_sign_in_logo)*/
                         .setSmallIcon(R.mipmap.ic_launcher)
                         .setContentTitle(title)
-                        .setContentText(message.getBody())
+                        .setContentText(message)
                         .setAutoCancel(true)
                         .setSound(defaultSoundUri)
                         .setContentIntent(pendingIntent);

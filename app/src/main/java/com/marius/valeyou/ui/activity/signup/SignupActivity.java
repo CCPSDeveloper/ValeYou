@@ -8,16 +8,20 @@ import android.text.method.LinkMovementMethod;
 import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 
 import com.marius.valeyou.BR;
 import com.marius.valeyou.R;
 import com.marius.valeyou.data.beans.base.MoreBean;
+import com.marius.valeyou.data.beans.base.SimpleApiResponse;
 import com.marius.valeyou.data.beans.reqbean.SocialDataBean;
 import com.marius.valeyou.data.beans.signup.SignupData;
 import com.marius.valeyou.data.remote.helper.Resource;
 import com.marius.valeyou.databinding.ActivitySignupBinding;
 import com.marius.valeyou.databinding.HolderNgoItemBinding;
+import com.marius.valeyou.databinding.OtpBinding;
 import com.marius.valeyou.di.base.adapter.SimpleRecyclerViewAdapter;
+import com.marius.valeyou.di.base.dialog.BaseCustomDialog;
 import com.marius.valeyou.di.base.view.AppActivity;
 import com.marius.valeyou.ui.activity.login.LoginActivity;
 import com.marius.valeyou.ui.activity.main.MainActivity;
@@ -95,6 +99,57 @@ public class SignupActivity extends AppActivity<ActivitySignupBinding, SignupAct
             }
         });
 
+        vm.sendOTPEvent.observe(this, new SingleRequestEvent.RequestObserver<SimpleApiResponse>() {
+            @Override
+            public void onRequestReceived(@NonNull Resource<SimpleApiResponse> resource) {
+                switch (resource.status) {
+                    case LOADING:
+                        break;
+                    case SUCCESS:
+                        vm.success.setValue(resource.message);
+                        break;
+                    case ERROR:
+                        vm.error.setValue(resource.message);
+                        break;
+                    case WARN:
+                        vm.warn.setValue(resource.message);
+                        break;
+                }
+            }
+        });
+
+
+        vm.verifyEmailEvent.observe(this, new SingleRequestEvent.RequestObserver<SimpleApiResponse>() {
+            @Override
+            public void onRequestReceived(@NonNull Resource<SimpleApiResponse> resource) {
+                switch (resource.status) {
+                    case LOADING:
+                        break;
+                    case SUCCESS:
+                        verificationDialog.dismiss();
+                        vm.success.setValue(resource.message);
+                        Intent intent = MainActivity.newIntent(SignupActivity.this,"signup");
+                        intent.putExtra("social", false);
+                        startNewActivity(intent,true);
+                        finishAffinity();
+
+                        break;
+                    case ERROR:
+                        if (resource.message.equalsIgnoreCase("bad request")){
+                            vm.error.setValue("Invalid OTP");
+                        }else{
+                            vm.error.setValue(resource.message);
+                        }
+                        break;
+                    case WARN:
+                        vm.warn.setValue(resource.message);
+                        break;
+                }
+            }
+        });
+
+
+
         vm.userBean.observe(this, new SingleRequestEvent.RequestObserver<SignupData>() {
             @Override
             public void onRequestReceived(@NonNull Resource<SignupData> resource) {
@@ -104,8 +159,11 @@ public class SignupActivity extends AppActivity<ActivitySignupBinding, SignupAct
                         break;
                     case SUCCESS:
                         binding.setCheck(false);
-                        Intent intent1 = MainActivity.newIntent(SignupActivity.this,"signup");
-                        startNewActivity(intent1, true, true);
+
+                        verifyDialog(binding.etEmail.getText().toString());
+                        vm.success.setValue(resource.message);
+
+
                         break;
                     case ERROR:
                         binding.setCheck(false);
@@ -229,12 +287,56 @@ public class SignupActivity extends AppActivity<ActivitySignupBinding, SignupAct
 
     @Override
     public void onBackPressed() {
-        /*super.onBackPressed();*/
-        Intent intent = LoginActivity.newIntent(SignupActivity.this);
-        startNewActivity(intent, true, true);
+        super.onBackPressed();
     }
 
     public static boolean isValidEmail(CharSequence target) {
         return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
     }
+
+
+
+    private BaseCustomDialog<OtpBinding> verificationDialog;
+    private void verifyDialog(String email) {
+        verificationDialog = new BaseCustomDialog<>(SignupActivity.this, R.layout.otp, new BaseCustomDialog.Listener() {
+            @Override
+            public void onViewClick(View view) {
+                if (view != null && view.getId() != 0) {
+                    switch (view.getId()) {
+
+                        case R.id.iv_cancel:
+                            verificationDialog.dismiss();
+                            Intent intent = LoginActivity.newIntent(SignupActivity.this);
+                            startNewActivity(intent,true);
+                            finishAffinity();
+                            break;
+                        case R.id.btn_submit:
+                            if (!verificationDialog.getBinding().etOtp.getText().toString().isEmpty()){
+                                viewModel.verifyEmail(email,verificationDialog.getBinding().etOtp.getText().toString().trim());
+                            }else{
+                                viewModel.error.setValue("Enter OTP");
+                            }
+                            break;
+
+                        case R.id.resend_otp:
+                            if (!email.isEmpty()){
+                                viewModel.sendOTP(email);
+                            }else{
+                                viewModel.error.setValue("Something went wrong");
+                            }
+                            break;
+
+                    }
+                }
+            }
+        });
+        verificationDialog.getBinding().tvTwo.setText("Enter the OTP you recieve to \n"+email);
+        verificationDialog.setCancelable(true);
+        verificationDialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
+        verificationDialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        verificationDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        verificationDialog.show();
+
+    }
+
 }

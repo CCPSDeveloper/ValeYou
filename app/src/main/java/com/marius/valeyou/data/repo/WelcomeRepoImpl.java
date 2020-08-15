@@ -44,7 +44,7 @@ public class WelcomeRepoImpl implements WelcomeRepo {
     public Single<ApiResponse<SignupData>> signupApi(Map<String, String> data, int device_type, int ngo) {
         return welcomeApi.signupApi(Constants.SECURITY_KEY, data, device_type, ngo).doOnSuccess(userBeanApiResponse -> {
             if (userBeanApiResponse.getData() != null) {
-                sharedPref.putUserData(userBeanApiResponse.getData());
+                //sharedPref.putUserData(userBeanApiResponse.getData());
             }
         });
     }
@@ -56,6 +56,16 @@ public class WelcomeRepoImpl implements WelcomeRepo {
                 sharedPref.putUserData(userBeanApiResponse.getData());
             }
         });
+    }
+
+    @Override
+    public Single<SimpleApiResponse> sendOTP(String email) {
+        return welcomeApi.sendOTP(Constants.SECURITY_KEY,email);
+    }
+
+    @Override
+    public Single<SimpleApiResponse> verifyEmail(String email, String otp) {
+        return welcomeApi.verifyEmail(Constants.SECURITY_KEY,email,otp);
     }
 
     @Override

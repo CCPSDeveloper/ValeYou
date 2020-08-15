@@ -29,6 +29,10 @@ public interface WelcomeRepo {
 
     Single<ApiResponse<SignupData>> loginApi(Map<String, String> map);
 
+    Single<SimpleApiResponse> sendOTP(String email);
+    Single<SimpleApiResponse> verifyEmail(String email,String otp);
+
+
     Single<ApiResponse> logOut(int user_id, String auth_key);
 
     Single<ApiResponse> userChangePassword(String auth_key, String old_password, String new_password);

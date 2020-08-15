@@ -12,7 +12,6 @@
 
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
 
-
     <!-- login signup -->
     <string name="signup">Sign Up With Email</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
@@ -62,7 +61,7 @@
     <string name="my_services">My Services</string>
     <string name="deactivate_account">Deactivate Account</string>
     <string name="cancel">Cancel</string>
-    <string name="deactivate_description">If you are deactivating your account, make sure that you still have access to the email address you use to login. That way you can easily reactivate your accountby logging back in.</string>
+    <string name="deactivate_description">If you are deactivating your account, make sure that you still have access to the email address you use to login. That way you can easily reactivate your account by logging back in.</string>
 
     <!--\n<b>To confirm this, type \'\'Deactivate Account\'\'</b>-->
     <string name="delete_description">Deleting your account will remove all of your information from our database.
@@ -73,7 +72,8 @@
     <string name="select_category">Select Category</string>
     <string name="ok">Ok</string>
     <string name="view_details">View Details</string>
-    <string name="i_accept_the_policy_and_terms"><html>I accept the <a href="http://somesite.com/"><font fgcolor='#24bef2'>policy and terms</font></a></html></string>
+    <string name="policy">"I accepts the <a href='https://www.anyurl.com/privacy'>Privacy Policy</a> and <a href='https://www.anyurl.com/tos'>Terms &amp; Conditions.</a>"</string>
+    <string name="otp_text">OTP Verification</string>
 
     <!--  -->
 

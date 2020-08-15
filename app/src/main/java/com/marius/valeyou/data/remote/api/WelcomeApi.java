@@ -85,7 +85,7 @@ public interface WelcomeApi {
 
     @FormUrlEncoded
     @POST("user_forgot_password")
-    Single<SimpleApiResponse> forgetPassword(@Field("email") String email);
+    Single<SimpleApiResponse> forgetPassword(@Field("email") String email );
 
     @FormUrlEncoded
     @HTTP(method = "DELETE", path = "provider_delete_language", hasBody = true)
@@ -209,6 +209,18 @@ public interface WelcomeApi {
     Single<SimpleApiResponse> deleteIdentity(@Header("security_key") String security_key,
                                              @Header("auth_key") String auth_key,
                                              @Field("identity_id") int identity_id);
+
+
+    @FormUrlEncoded
+    @POST("user_send_verify_email")
+    Single<SimpleApiResponse> sendOTP(@Header("security_key") String security_key,
+                                      @Field("email") String email);
+
+    @FormUrlEncoded
+    @POST("user_check_verify_email_otp")
+    Single<SimpleApiResponse> verifyEmail(@Header("security_key") String security_key,
+                                          @Field("email") String email,
+                                          @Field("otp") String otp);
 
 
 

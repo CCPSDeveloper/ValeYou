@@ -184,9 +184,13 @@ public class ProfileActivity extends AppActivity<ActivityProfileBinding, Profile
                     case SUCCESS:
                         dismissProgressDialog();
                         vm.success.setValue(resource.message);
+                        if (resource.message.equalsIgnoreCase("account deactivate successfully")){
+                            vm.success.setValue("Your accoutn is deactivated! Please login back to reactivate.");
+                        }
                         sharedPref.deleteAll();
                         Intent intent1 = LoginActivity.newIntent(ProfileActivity.this);
                         startNewActivity(intent1, true, true);
+                        finishAffinity();
                     case WARN:
                         dismissProgressDialog();
                         vm.warn.setValue(resource.message);

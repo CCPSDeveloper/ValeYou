@@ -4,16 +4,22 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.marius.valeyou.R;
 import com.marius.valeyou.data.local.SharedPref;
 import com.marius.valeyou.databinding.ActivityMainBinding;
 import com.marius.valeyou.di.base.view.AppActivity;
+import com.marius.valeyou.di.fcm.Config;
 import com.marius.valeyou.ui.activity.notification.NotificationActivity;
 import com.marius.valeyou.ui.activity.selectcategory.SelectCategoryActivity;
 import com.marius.valeyou.ui.fragment.home.HomeFragment;
@@ -31,6 +37,7 @@ import com.marius.valeyou.util.misc.RxBus;
 import javax.inject.Inject;
 
 public class MainActivity extends AppActivity<ActivityMainBinding, MainActivityVM> {
+    public static final String TAG = "MainActivity";
 
     @Inject
     SharedPref sharedPref;

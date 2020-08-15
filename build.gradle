@@ -16,6 +16,9 @@ buildscript {
         projectDependencies.each {
             add(it.configuration, it.dependency)
         }
+        classpath ('com.google.firebase:firebase-plugins:1.1.0') {
+            exclude group: 'com.google.guava', module: 'guava-jdk5'
+        }
     }
 }
 

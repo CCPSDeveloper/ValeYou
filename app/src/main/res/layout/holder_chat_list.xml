@@ -5,20 +5,27 @@
 
         <variable
             name="bean"
-            type="com.marius.valeyou.data.beans.base.MoreBean" />
+            type="com.marius.valeyou.data.beans.chat.UsersModel" />
 
         <variable
-            name="callback"
-            type="com.marius.valeyou.di.base.adapter.SimpleRecyclerViewAdapter.SimpleCallback" />
+            name="model"
+            type="com.marius.valeyou.ui.fragment.message.ChatUsersAdapter" />
     </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5sp"
+        app:cardCornerRadius="@dimen/dp10">
+
 
     <LinearLayout
         android:id="@+id/ll_items"
         android:foreground="?selectableItemBackground"
-        android:onClick="@{v->callback.onItemClick(v,bean)}"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
 
         <RelativeLayout
             android:layout_width="@dimen/dp55"
@@ -32,6 +39,7 @@
                 app:cardCornerRadius="@dimen/dp25">
 
                 <ImageView
+                    android:id="@+id/user_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/grey_light" />
@@ -49,6 +57,10 @@
 
         </RelativeLayout>
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -61,25 +73,18 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/user_name"
                     style="@style/TextViewStyleSubTitleRegular"
                     android:text="Johan Petter"
                     android:textColor="@color/grey"
                     android:includeFontPadding="false"
                     />
 
-                <TextView
-                    style="@style/TextViewStyleSubTitleRegular"
-                    android:text="16:28"
-                    android:textColor="@color/grey"
-                    android:layout_alignParentEnd="true"
-                    android:textSize="@dimen/sp11"
-                    android:maxLines="2"
-                    android:includeFontPadding="false"
-                    android:layout_centerVertical="true"
-                    />
+
 
             </RelativeLayout>
             <TextView
+                android:id="@+id/message"
                 style="@style/TextViewStyleSubTitleRegular"
                 android:text="Hi Johan Petter, How are you ? What going on now a days?"
                 android:textSize="@dimen/sp11"
@@ -91,6 +96,25 @@
 
         </LinearLayout>
 
+            <TextView
+                android:id="@+id/time"
+                style="@style/TextViewStyleSubTitleRegular"
+                android:text="16:28"
+                android:textColor="@color/edit_text"
+                android:layout_alignParentEnd="true"
+                android:textSize="@dimen/sp11"
+                android:maxLines="2"
+                android:layout_gravity="right"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:includeFontPadding="false"
+                android:layout_centerVertical="true"
+                />
+
+        </FrameLayout>
+
     </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </layout>

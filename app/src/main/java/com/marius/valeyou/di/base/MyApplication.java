@@ -22,6 +22,7 @@ public class MyApplication extends DaggerApplication {
         application = this;
         MultiDex.install(this);
         attachErrorHandler();
+
         AppVisibilityDetector.init(this, new AppVisibilityDetector.AppVisibilityCallback() {
             @Override
             public void onAppGotoForeground() {
@@ -44,7 +45,6 @@ public class MyApplication extends DaggerApplication {
 
 
     }
-
 
     public static MyApplication getInstance() {
         return application;

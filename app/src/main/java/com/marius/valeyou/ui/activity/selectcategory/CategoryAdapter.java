@@ -87,7 +87,20 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Produc
                 @Override
                 public void onItemClick(View v, SubCategoryBean moreBean) {
                     int j = getAdapterPosition();
-                    openDialog(j, moreBean, ((SelectCategoryActivity) baseContext).category_type);
+                    //openDialog(j, moreBean, ((SelectCategoryActivity) baseContext).category_type);
+                    String price = "101";
+                    List<SubCategoryBean> subCategories = moreBeans.get(j).getSubCategories();
+                    for (int i = 0; i < subCategories.size(); i++) {
+                        if (subCategories.get(i).getId() == moreBean.getId()) {
+                            subCategories.get(i).setCheck(true);
+                            subCategories.get(i).setPrice(price);
+                        }
+                    }
+                    moreBeans.get(j).setCheck(true);
+                    moreBeans.get(j).setSubCategories(subCategories);
+
+                    notifyDataSetChanged();
+
                 }
             });
             holderProductTitleBinding.rvSubCategory.setAdapter(adapter);

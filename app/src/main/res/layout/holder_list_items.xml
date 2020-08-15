@@ -10,6 +10,7 @@
         <variable
             name="callback"
             type="com.marius.valeyou.di.base.adapter.SimpleRecyclerViewAdapter.SimpleCallback" />
+
     </data>
 
     <androidx.cardview.widget.CardView

@@ -40,7 +40,15 @@ public class SignupData implements Parcelable {
     private String state;
     private String dob;
     private int status;
+    private int isEmailVerify;
 
+    public int getIsEmailVerify() {
+        return isEmailVerify;
+    }
+
+    public void setIsEmailVerify(int isEmailVerify) {
+        this.isEmailVerify = isEmailVerify;
+    }
 
     public String getDob() {
         return dob;
