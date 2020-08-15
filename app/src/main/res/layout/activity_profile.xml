@@ -221,7 +221,7 @@
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:maxLines="2"
-                            android:text='@{profile.houseNumber+" "+profile.appartment+" "+profile.street}'
+                            android:text='@{profile.address}'
                             android:textAlignment="textEnd"
                             android:textColor="@color/edit_text"
                             android:layout_alignParentEnd="true"

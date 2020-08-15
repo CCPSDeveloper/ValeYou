@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.hbb20.CountryCodePicker;
 import com.marius.valeyou_admin.R;
 import com.marius.valeyou_admin.data.beans.base.ApiResponse;
@@ -112,18 +113,12 @@ public class SignupActivity extends AppActivity<ActivitySignupBinding, SignupAct
                 binding.passwordLayout.setVisibility(View.VISIBLE);
                 binding.conpassLayout.setVisibility(View.VISIBLE);
 
-
             }
-
-
-
-
         }
 
         vm.base_back.observe(this, aVoid -> {
             finish(true);
         });
-
 
         vm.base_click.observe(this, view -> {
 
@@ -138,6 +133,30 @@ public class SignupActivity extends AppActivity<ActivitySignupBinding, SignupAct
             }
         });
 
+        vm.sendOTPEvent.observe(this, new SingleRequestEvent.RequestObserver<SimpleApiResponse>() {
+            @Override
+            public void onRequestReceived(@NonNull Resource<SimpleApiResponse> resource) {
+                switch (resource.status) {
+                    case LOADING:
+                        break;
+                    case SUCCESS:
+                        vm.success.setValue(resource.message);
+                        break;
+                    case ERROR:
+                        if (resource.message.equalsIgnoreCase("bad request")){
+                            vm.error.setValue("Invalid OTP");
+                        }else{
+                            vm.error.setValue(resource.message);
+                        }
+
+                        break;
+                    case WARN:
+                        vm.warn.setValue(resource.message);
+                        break;
+                }
+            }
+        });
+
 
         vm.verifyEmailEvent.observe(this, new SingleRequestEvent.RequestObserver<SimpleApiResponse>() {
             @Override
@@ -147,13 +166,19 @@ public class SignupActivity extends AppActivity<ActivitySignupBinding, SignupAct
                         break;
                     case SUCCESS:
                         verificationDialog.dismiss();
+                        vm.success.setValue(resource.message);
+
                         Intent intent = SignupTwoActivity.newIntent(SignupActivity.this);
                         intent.putExtra("auth_key",auth_key);
-                        startNewActivity(intent);
+                        startNewActivity(intent,true);
 
                         break;
                     case ERROR:
-                        vm.error.setValue(resource.message);
+                        if (resource.message.equalsIgnoreCase("bad request")){
+                            vm.error.setValue("Invalid OTP");
+                        }else{
+                            vm.error.setValue(resource.message);
+                        }
                         break;
                     case WARN:
                         vm.warn.setValue(resource.message);
@@ -181,9 +206,7 @@ public class SignupActivity extends AppActivity<ActivitySignupBinding, SignupAct
                             vm.error.setValue(resource.status+" : Email is already linked with another account");
                         }else {
                             vm.error.setValue(resource.status+" : "+resource.message);
-
                         }
-
                         break;
                     case WARN:
                         binding.setCheck(false);
@@ -223,7 +246,6 @@ public class SignupActivity extends AppActivity<ActivitySignupBinding, SignupAct
             }
         });
 
-
     }
     @Override
     public void onBackPressed() {
@@ -258,7 +280,7 @@ public class SignupActivity extends AppActivity<ActivitySignupBinding, SignupAct
            map.put(Constants.PHONE,phone);
            map.put(Constants.EMAIL,email);
            map.put(Constants.DEVICETYPE, "1");
-           map.put(Constants.DEVICE_TOKEN,"xyz");
+           map.put(Constants.DEVICE_TOKEN,sharedPref.get(Constants.FCM_TOKEN, "xyz"));
            if (mCurrentlocation != null) {
 
                String latitude = String.valueOf(mCurrentlocation.getLatitude());
@@ -280,8 +302,6 @@ public class SignupActivity extends AppActivity<ActivitySignupBinding, SignupAct
                viewModel.signupApi(map);
 
            }
-
-
 
        }
     }
@@ -320,7 +340,7 @@ public class SignupActivity extends AppActivity<ActivitySignupBinding, SignupAct
             map.put(Constants.EMAIL,email);
             map.put(Constants.PASSWORD,password);
             map.put(Constants.DEVICETYPE, "1");
-            map.put(Constants.DEVICE_TOKEN,"xyz");
+            map.put(Constants.DEVICE_TOKEN,sharedPref.get(Constants.FCM_TOKEN, "xyz"));
             if (mCurrentlocation != null) {
 
                 String latitude = String.valueOf(mCurrentlocation.getLatitude());
@@ -347,6 +367,13 @@ public class SignupActivity extends AppActivity<ActivitySignupBinding, SignupAct
             public void onViewClick(View view) {
                 if (view != null && view.getId() != 0) {
                     switch (view.getId()) {
+
+                        case R.id.iv_cancel:
+                            verificationDialog.dismiss();
+                            Intent intent = LoginActivity.newIntent(SignupActivity.this);
+                            startNewActivity(intent,true);
+                            finishAffinity();
+                            break;
                         case R.id.btn_submit:
                             if (!verificationDialog.getBinding().etOtp.getText().toString().isEmpty()){
                                 viewModel.verifyEmail(email,verificationDialog.getBinding().etOtp.getText().toString().trim());
@@ -368,7 +395,7 @@ public class SignupActivity extends AppActivity<ActivitySignupBinding, SignupAct
             }
         });
         verificationDialog.getBinding().tvTwo.setText("Enter the OTP you recieve to \n"+email);
-        verificationDialog.setCancelable(false);
+        verificationDialog.setCancelable(true);
         verificationDialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
         verificationDialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         verificationDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);

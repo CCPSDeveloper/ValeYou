@@ -113,7 +113,7 @@ public class UpComingJobsAdapter extends RecyclerView.Adapter<UpComingJobsAdapte
     private String convertTimeStampToTime(long timestamp){
         Calendar cal = Calendar.getInstance(Locale.ENGLISH);
         cal.setTimeInMillis(timestamp * 1000L);
-        String date = DateFormat.format("MMM dd, yyyy hh:mm a", cal).toString();
+        String date = DateFormat.format("MMM dd, yyyy ", cal).toString();
         return date;
     }
 }

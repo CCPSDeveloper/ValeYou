@@ -41,6 +41,7 @@ import com.marius.valeyou_admin.ui.activity.dashboard.profile.certificate.AddCer
 import com.marius.valeyou_admin.ui.activity.dashboard.profile.portfolio.AddPortfolioActivity;
 import com.marius.valeyou_admin.ui.activity.dashboard.profile.portfolio.AddPortfolioActivityVM;
 import com.marius.valeyou_admin.ui.activity.login.LoginActivity;
+import com.marius.valeyou_admin.ui.activity.main.MainActivity;
 import com.marius.valeyou_admin.util.databinding.ImageViewBindingUtils;
 import com.marius.valeyou_admin.util.event.SingleRequestEvent;
 import com.marius.valeyou_admin.util.permission.PermissionHandler;
@@ -66,6 +67,7 @@ public class IdentityActivity extends AppActivity<ActivityIdentityBinding,Activi
     int camera;
     File backfile;
     File frontfile;
+    String authkey;
 
     public static Intent newIntent(Activity activity) {
         Intent intent = new Intent(activity, IdentityActivity.class);
@@ -88,12 +90,13 @@ public class IdentityActivity extends AppActivity<ActivityIdentityBinding,Activi
             comeFrom = intent.getStringExtra("comeFrom");
             if (comeFrom.equalsIgnoreCase("add")) {
                 binding.header.tvTitle.setText("Upload Identity");
-            } else {
+            } else if (comeFrom.equalsIgnoreCase("edit")){
                 binding.header.tvTitle.setText("Edit Identity");
                 IdentityModel identityModel = intent.getParcelableExtra("IdentityData");
                 identity_id = String.valueOf(identityModel.getId());
-
-
+            }else if (comeFrom.equalsIgnoreCase("cat")){
+                binding.header.tvTitle.setText("Upload Identity");
+                authkey = intent.getStringExtra("auth_key");
             }
         }
         binding.header.tvTitle.setTextColor(getResources().getColor(R.color.white));
@@ -114,9 +117,15 @@ public class IdentityActivity extends AppActivity<ActivityIdentityBinding,Activi
                         break;
                     case SUCCESS:
                         dismissProgressDialog();
-                        Intent intent = ProfileActivity.newIntent(IdentityActivity.this);
-                        startNewActivity(intent);
-                        finish();
+                        if (comeFrom.equalsIgnoreCase("cat")){
+                            Intent intent = MainActivity.newIntent(IdentityActivity.this);
+                            startNewActivity(intent,true);
+                           finishAffinity();
+                        }else {
+                            Intent intent = ProfileActivity.newIntent(IdentityActivity.this);
+                            startNewActivity(intent);
+                            finish();
+                        }
                         break;
                     case ERROR:
                         dismissProgressDialog();
@@ -148,7 +157,9 @@ public class IdentityActivity extends AppActivity<ActivityIdentityBinding,Activi
                     case R.id.cv_save:
 
                         if (frontfile == null) {
+
                             vm.info.setValue("Please choose  front side of your identity");
+
                         } else if(backfile == null) {
 
                             vm.info.setValue("Please choose back side of your identity");
@@ -178,6 +189,12 @@ public class IdentityActivity extends AppActivity<ActivityIdentityBinding,Activi
                                 Map<String, RequestBody> map = new HashMap<>();
                                 map.put("identity_id", toRequestBody(identity_id));
                                 vm.editIdentity(vm.sharedPref.getUserData().getAuthKey(), map, frontbody,backbody);
+
+                            }else if (comeFrom.equalsIgnoreCase("cat")) {
+
+                                if (authkey!=null) {
+                                    vm.addIdentity(authkey, frontbody, backbody);
+                                }
 
                             }
 

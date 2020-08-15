@@ -18,6 +18,7 @@ import com.marius.valeyou_admin.databinding.ActivityStartJobTimerBinding;
 import com.marius.valeyou_admin.databinding.DialogDeleteAccouontBinding;
 import com.marius.valeyou_admin.di.base.dialog.BaseCustomDialog;
 import com.marius.valeyou_admin.di.base.view.AppActivity;
+import com.marius.valeyou_admin.ui.activity.dashboard.message.chatview.ChatActivity;
 import com.marius.valeyou_admin.ui.activity.login.LoginActivity;
 import com.marius.valeyou_admin.ui.activity.main.MainActivity;
 import com.marius.valeyou_admin.ui.fragment.myjob.upcoming.complete.CompleteJobActivity;
@@ -32,19 +33,20 @@ import java.util.Locale;
 
 import androidx.lifecycle.Observer;
 
-public class StartJobTimerActivity extends AppActivity<ActivityStartJobTimerBinding,StartJobTimerActivityVM> {
+public class StartJobTimerActivity extends AppActivity<ActivityStartJobTimerBinding, StartJobTimerActivityVM> {
 
     int id;
+    JobDetailModel modelData;
 
     public static Intent newInstent(Activity activity) {
-        Intent intent = new Intent(activity,StartJobTimerActivity.class);
+        Intent intent = new Intent(activity, StartJobTimerActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         return intent;
     }
 
     @Override
     protected BindingActivity<StartJobTimerActivityVM> getBindingActivity() {
-        return new BindingActivity<>(R.layout.activity_start_job_timer,StartJobTimerActivityVM.class);
+        return new BindingActivity<>(R.layout.activity_start_job_timer, StartJobTimerActivityVM.class);
     }
 
     @Override
@@ -52,11 +54,11 @@ public class StartJobTimerActivity extends AppActivity<ActivityStartJobTimerBind
         binding.header.tvTitle.setText("Current Job Detail");
 
         Intent intent = getIntent();
-        if (intent!=null){
+        if (intent != null) {
 
-            id = intent.getIntExtra("id",0);
+            id = intent.getIntExtra("id", 0);
             String authKey = viewModel.sharedPref.getUserData().getAuthKey();
-            viewModel.getJobDetaial(authKey,id);
+            viewModel.getJobDetaial(authKey, id);
 
         }
 
@@ -71,51 +73,55 @@ public class StartJobTimerActivity extends AppActivity<ActivityStartJobTimerBind
         vm.base_click.observe(this, new Observer<View>() {
             @Override
             public void onChanged(View view) {
-                switch (view.getId()){
+                switch (view.getId()) {
                     case R.id.btn_end_job:
                         dialogStartJob();
+                        break;
+                    case R.id.btn_chat:
+                        /*Intent intent1 = ChatActivity.newIntent(StartJobTimerActivity.this);
+                        intent1.putExtra("comeFrom", "job");
+                        startNewActivity(intent1);*/
                         break;
                 }
             }
         });
 
 
-      vm.startJobApiBean.observe(this, new Observer<Resource<SimpleApiResponse>>() {
-          @Override
-          public void onChanged(Resource<SimpleApiResponse> apiResponseResource) {
-              switch (apiResponseResource.status) {
-                  case LOADING:
-                      binding.setCheck(true);
-                      break;
-                  case SUCCESS:
-                      binding.setCheck(false);
-                      vm.success.setValue(apiResponseResource.message);
-                      Intent intent = CompleteJobActivity.newIntent(StartJobTimerActivity.this);
-                      intent.putExtra("id",id);
-                      startNewActivity(intent,true);
-                      finish();
+        vm.startJobApiBean.observe(this, new Observer<Resource<SimpleApiResponse>>() {
+            @Override
+            public void onChanged(Resource<SimpleApiResponse> apiResponseResource) {
+                switch (apiResponseResource.status) {
+                    case LOADING:
+                        binding.setCheck(true);
+                        break;
+                    case SUCCESS:
+                        binding.setCheck(false);
+                        vm.success.setValue(apiResponseResource.message);
+                        Intent intent = CompleteJobActivity.newIntent(StartJobTimerActivity.this);
+                        intent.putExtra("id", id);
+                        startNewActivity(intent, true);
+                        finish();
 
-                      break;
-                  case ERROR:
-                      binding.setCheck(false);
-                      vm.error.setValue(apiResponseResource.message);
-                      if (apiResponseResource.message.equalsIgnoreCase("unauthorised")){
+                        break;
+                    case ERROR:
+                        binding.setCheck(false);
+                        vm.error.setValue(apiResponseResource.message);
+                        if (apiResponseResource.message.equalsIgnoreCase("unauthorised")) {
 
-                          vm.sharedPref.deleteAll();
-                          Intent intent1 = LoginActivity.newIntent(StartJobTimerActivity.this);
-                          startNewActivity(intent1, true, true);
-                          finishAffinity();
+                            vm.sharedPref.deleteAll();
+                            Intent intent1 = LoginActivity.newIntent(StartJobTimerActivity.this);
+                            startNewActivity(intent1, true, true);
+                            finishAffinity();
 
-                      }
-                      break;
-                  case WARN:
-                      binding.setCheck(false);
-                      vm.warn.setValue(apiResponseResource.message);
-                      break;
-              }
-          }
-      });
-
+                        }
+                        break;
+                    case WARN:
+                        binding.setCheck(false);
+                        vm.warn.setValue(apiResponseResource.message);
+                        break;
+                }
+            }
+        });
 
 
         vm.jobDetailBean.observe(this, new Observer<Resource<JobDetailModel>>() {
@@ -128,29 +134,30 @@ public class StartJobTimerActivity extends AppActivity<ActivityStartJobTimerBind
                     case SUCCESS:
 
                         binding.setCheck(false);
-                        binding.setVariable(BR.bean,resource.data);
+                        modelData = resource.data;
+                        binding.setVariable(BR.bean, resource.data);
 
-                        if (resource.data.getStatus() == 3){
+                        if (resource.data.getStatus() == 3) {
                             binding.statusText.setText("Ongoing");
                         }
 
 
-                        if (resource.data.getOrderImages().size()>0) {
+                        if (resource.data.getOrderImages().size() > 0) {
                             String image = resource.data.getOrderImages().get(0).getImages();
-                            ImageViewBindingUtils.setImage(binding.jobImage,"http://3.17.254.50:4999/upload/"+image);
+                            ImageViewBindingUtils.setImage(binding.jobImage, "http://3.17.254.50:4999/upload/" + image);
 
                         }
 
-                     long startJobTimeStamp = Long.parseLong(resource.data.getStartjobDate());
-                     String startJobTime =  convertTimeStampToTime(startJobTimeStamp);
-                     binding.startTime.setText(startJobTime);
+                        long startJobTimeStamp = Long.parseLong(resource.data.getStartjobDate());
+                        String startJobTime = convertTimeStampToTime(startJobTimeStamp);
+                        binding.startTime.setText(startJobTime);
 
 
                         break;
                     case ERROR:
                         binding.setCheck(false);
                         vm.error.setValue(resource.message);
-                        if (resource.message.equalsIgnoreCase("unauthorised")){
+                        if (resource.message.equalsIgnoreCase("unauthorised")) {
                             Intent intent1 = LoginActivity.newIntent(StartJobTimerActivity.this);
                             startNewActivity(intent1, true, true);
                         }
@@ -168,7 +175,7 @@ public class StartJobTimerActivity extends AppActivity<ActivityStartJobTimerBind
     }
 
 
-    private String convertTimeStampToTime(long timestamp){
+    private String convertTimeStampToTime(long timestamp) {
         Calendar cal = Calendar.getInstance(Locale.ENGLISH);
         cal.setTimeInMillis(timestamp * 1000L);
         String date = DateFormat.format("MMM dd, yyyy hh:mm a", cal).toString();
@@ -177,6 +184,7 @@ public class StartJobTimerActivity extends AppActivity<ActivityStartJobTimerBind
 
 
     private BaseCustomDialog<DialogDeleteAccouontBinding> dialogStartEndJob;
+
     private void dialogStartJob() {
         dialogStartEndJob = new BaseCustomDialog<>(StartJobTimerActivity.this, R.layout.dialog_end_job, new BaseCustomDialog.Listener() {
             @Override
@@ -185,8 +193,8 @@ public class StartJobTimerActivity extends AppActivity<ActivityStartJobTimerBind
                     switch (view.getId()) {
                         case R.id.btn_submit:
                             String authKey = viewModel.sharedPref.getUserData().getAuthKey();
-                            String end =  (System.currentTimeMillis()/1000)+"";
-                            viewModel.endJob(authKey, id, 4,end);
+                            String end = (System.currentTimeMillis() / 1000) + "";
+                            viewModel.endJob(authKey, id, 4, end);
 
                             dialogStartEndJob.dismiss();
                             break;

@@ -3,7 +3,11 @@ package com.marius.valeyou_admin.di.base;
 import androidx.multidex.MultiDex;
 
 import com.marius.valeyou_admin.di.component.DaggerAppComponent;
+import com.marius.valeyou_admin.di.socket.SocketManager;
+import com.marius.valeyou_admin.util.Constants;
 import com.marius.valeyou_admin.util.misc.AppVisibilityDetector;
+
+import java.net.URISyntaxException;
 
 import dagger.android.AndroidInjector;
 import dagger.android.support.DaggerApplication;
@@ -11,6 +15,8 @@ import io.reactivex.exceptions.OnErrorNotImplementedException;
 import io.reactivex.exceptions.ProtocolViolationException;
 import io.reactivex.functions.Consumer;
 import io.reactivex.plugins.RxJavaPlugins;
+import io.socket.client.IO;
+import io.socket.client.Socket;
 
 public class MyApplication extends DaggerApplication {
     private static final String TAG = MyApplication.class.getSimpleName();

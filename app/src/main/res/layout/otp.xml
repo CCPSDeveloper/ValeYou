@@ -24,6 +24,13 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dp20"
                 android:elevation="@dimen/dp2">
+                <ImageView
+                    android:id="@+id/iv_cancel"
+                    android:layout_width="@dimen/dp30"
+                    android:layout_height="@dimen/dp30"
+                    android:src="@drawable/ic_cancel_icon"
+                    android:onClick="@{v->callback.onViewClick(v)}"
+                    android:layout_alignParentEnd="true" />
 
                 <TextView
                     android:id="@+id/tv_one"

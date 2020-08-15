@@ -2,20 +2,65 @@
   "project_info": {
     "project_number": "216208262512",
     "firebase_url": "https://valeyou-587b2.firebaseio.com",
-    "project_id": "valeyou_admin-587b2",
-    "storage_bucket": "valeyou_admin-587b2.appspot.com"
+    "project_id": "valeyou-587b2",
+    "storage_bucket": "valeyou-587b2.appspot.com"
   },
   "client": [
     {
       "client_info": {
         "mobilesdk_app_id": "1:216208262512:android:a788f5d27e3a5264a2bbb5",
         "android_client_info": {
-          "package_name": "com.marius.valeyou_admin"
+          "package_name": "com.marius.valeyou"
         }
       },
       "oauth_client": [
         {
           "client_id": "216208262512-b98t0pcjbnqdvj3sfon4hmrrug617mv0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.marius.valeyou",
+            "certificate_hash": "d2bd484f5a0b0d5f16ccb7ae954e1f97557ed951"
+          }
+        },
+        {
+          "client_id": "216208262512-f2g23m910eu60ti9n2glkopsiho7geur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDV_Ik-g8KxKqALt9v0VmO3v8_NZkahW8A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "216208262512-72n9mm7915o8c82o0doildoi1utgo2bg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:216208262512:android:e87da749d7fcdab4a2bbb5",
+        "android_client_info": {
+          "package_name": "com.marius.valeyou_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "216208262512-ccde57cto9ht0oro6qu8f1j8h1934r3g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.marius.valeyou_admin",
+            "certificate_hash": "237fd6c97cddbf79569eff43c34446a9aebb7c0e"
+          }
+        },
+        {
+          "client_id": "216208262512-j9aips63h4ue558vg2bk3ivoaa0arbds.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.marius.valeyou_admin",
@@ -36,7 +81,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "216208262512-f2g23m910eu60ti9n2glkopsiho7geur.apps.googleusercontent.com",
+              "client_id": "216208262512-72n9mm7915o8c82o0doildoi1utgo2bg.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

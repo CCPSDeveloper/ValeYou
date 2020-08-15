@@ -7,7 +7,6 @@ import com.marius.valeyou_admin.data.remote.helper.NetworkErrorHandler;
 import com.marius.valeyou_admin.data.repo.WelcomeRepo;
 import com.marius.valeyou_admin.data.repo.WelcomeRepoImpl;
 
-import javax.annotation.Nullable;
 import javax.inject.Singleton;
 
 import dagger.Module;

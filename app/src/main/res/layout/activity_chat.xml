@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:text="Michel Jospeh"
+                    android:id="@+id/tv_name"
                     android:padding="@dimen/dp10"
                     android:layout_marginStart="@dimen/dp10"
                     android:layout_centerVertical="true"
@@ -72,6 +72,12 @@
                         android:layout_height="@dimen/dp70"
                         app:cardCornerRadius="@dimen/dp45"
                         app:cardBackgroundColor="@color/grey_light">
+
+                        <ImageView
+                            android:id="@+id/img_user"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            />
 
                     </androidx.cardview.widget.CardView>
 
@@ -142,13 +148,30 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <include android:id="@+id/header"
                 layout="@layout/toolbar_layout"
                 app:vm="@{vm}"/>
 
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipeRefreshLayout"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/dp80"
+                android:layout_marginBottom="@dimen/dp50"
+                android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvMessageList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
         </LinearLayout>
 
     </RelativeLayout>
+
 </layout>

@@ -364,9 +364,9 @@ public class ProfileActivity extends AppActivity<ActivityProfileBinding, Profile
                         break;
                     case R.id.txt_services:
                        intent = MyServicesActivity.newIntent(ProfileActivity.this);
-                        Bundle args = new Bundle();
+                       /* Bundle args = new Bundle();
                         args.putSerializable("categoriesBean",(Serializable)categoriesBean);
-                        intent.putExtra("BUNDLE",args);
+                        intent.putExtra("BUNDLE",args);*/
                         startNewActivity(intent);
                         break;
                     case R.id.txt_business_hours:

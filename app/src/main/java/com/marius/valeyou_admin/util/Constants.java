@@ -6,9 +6,26 @@ package com.marius.valeyou_admin.util;
 
 public class Constants {
 
+
     public static final String GOOGLE_URL ="https://maps.googleapis.com/maps/api/";
     public static final String SECURITY_KEY ="JHNlcnZpY2VAdmFsZXlvdUBwcm92aWRlciQ=";
+    public static final String SOCKET_URL = "http://3.17.254.50:4999";
 
+    //socket
+    public static final String SOCKET_USER_ID = "userId";
+    public static final String USER_TYPE = "type";
+    public static final String PAGE = "page";
+    public static final String LIMIT = "limit";
+    public static final String SENDERID = "userId";
+    public static final String RECIEVERID = "user2Id";
+    public static final String MESSAGE = "message";
+    public static final String USERNAME = "user_name";
+    public static final String USERIMAGE = "user_image";
+    public static final String RECIEVERNAME = "user2_name";
+    public static final String RECIEVERIMAGE = "user2_image";
+    public static final String MSGTYPE = "msgType";
+    public static final String TIMESTAMP = "createdAt";
+    public static final String TYPE = "type";
 
     public static final String NAME = "name";
     public static final String FIRST_NAME = "first_name";
@@ -66,7 +83,6 @@ public class Constants {
     //add_edit_education
     public static final String SCHOOL = "school";
     public static final String DEGREE = "degree";
-    public static final String TYPE = "type";
     public static final String START_DATE = "startDate";
     public static final String END_DATE = "endDate";
     public static final String GRADE = "grade";

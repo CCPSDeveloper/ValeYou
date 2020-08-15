@@ -5,11 +5,11 @@
 
         <variable
             name="bean"
-            type="com.marius.valeyou_admin.data.beans.base.MoreBean" />
+            type="com.marius.valeyou_admin.data.beans.chat.UsersModel" />
 
         <variable
-            name="callback"
-            type="com.marius.valeyou_admin.di.base.adapter.SimpleRecyclerViewAdapter.SimpleCallback" />
+            name="model"
+            type="com.marius.valeyou_admin.ui.fragment.message.ChatUsersAdapter" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -20,7 +20,6 @@
 
         <LinearLayout
             android:id="@+id/ll_items"
-            android:onClick="@{v->callback.onItemClick(v,bean)}"
             android:foreground="?selectableItemBackground"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -38,13 +37,19 @@
                     app:cardCornerRadius="@dimen/dp25">
 
                     <ImageView
+                        android:id="@+id/image"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/grey_light" />
+                        android:background="@color/grey_light"
+                       />
 
                 </androidx.cardview.widget.CardView>
 
             </RelativeLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -58,27 +63,18 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:id="@+id/tv_name"
                         style="@style/TextViewStyleSubTitleRegular"
-                        android:text="Johan Petter"
-                        android:textColor="@color/grey"
                         android:includeFontPadding="false"
-                        />
+                        android:textColor="@color/black" />
 
-                    <TextView
-                        style="@style/TextViewStyleSubTitleRegular"
-                        android:text="16:28"
-                        android:textColor="@color/grey"
-                        android:layout_alignParentEnd="true"
-                        android:textSize="@dimen/sp11"
-                        android:maxLines="2"
-                        android:includeFontPadding="false"
-                        android:layout_centerVertical="true"
-                        />
+
 
                 </RelativeLayout>
                 <TextView
+                    android:id="@+id/message"
                     style="@style/TextViewStyleSubTitleRegular"
-                    android:text="Hi Johan Petter, How are you ? What going on now a days?"
+
                     android:textSize="@dimen/sp11"
                     android:layout_marginTop="@dimen/dp3"
                     android:layout_marginBottom="@dimen/dp3"
@@ -87,6 +83,24 @@
                     />
 
             </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    style="@style/TextViewStyleSubTitleRegular"
+                    android:text="16:28"
+                    android:textColor="@color/grey"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="@dimen/sp11"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:layout_marginRight="@dimen/dp10"
+                    android:textAlignment="textEnd"
+                    android:layout_gravity="right"
+                    android:maxLines="2"
+                    android:includeFontPadding="false"
+                    android:layout_centerVertical="true"
+                    />
+
+            </FrameLayout>
 
         </LinearLayout>
 

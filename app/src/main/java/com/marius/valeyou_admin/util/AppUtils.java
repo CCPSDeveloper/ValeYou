@@ -10,6 +10,8 @@ import android.graphics.Typeface;
 import android.provider.Settings;
 import androidx.annotation.NonNull;
 import com.google.android.material.textfield.TextInputLayout;
+import com.marius.valeyou_admin.di.socket.SocketManager;
+
 import android.text.TextPaint;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -28,6 +30,7 @@ import java.util.TimeZone;
  */
 public class AppUtils {
 
+    public static SocketManager mSocketManager;
     public static void setTypefaceToInputLayout(TextInputLayout inputLayout, Typeface typeFace) {
         try {
             inputLayout.getEditText().setTypeface(typeFace);
@@ -183,5 +186,7 @@ public class AppUtils {
         view.draw(canvas);
         return bitmap;
     }
+
+
 
 }

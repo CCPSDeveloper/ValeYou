@@ -240,6 +240,7 @@
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/rv_orderImages"
                                 android:layout_margin="@dimen/dp10"
+                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"/>
 

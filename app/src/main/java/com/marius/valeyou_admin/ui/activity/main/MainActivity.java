@@ -7,11 +7,13 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,7 +23,11 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.marius.valeyou_admin.R;
 import com.marius.valeyou_admin.data.beans.base.MoreBean;
 import com.marius.valeyou_admin.data.beans.singninbean.SignInModel;
@@ -33,6 +39,7 @@ import com.marius.valeyou_admin.databinding.HolderMoreBinding;
 import com.marius.valeyou_admin.di.base.adapter.SimpleRecyclerViewAdapter;
 import com.marius.valeyou_admin.di.base.dialog.BaseCustomDialog;
 import com.marius.valeyou_admin.di.base.view.AppActivity;
+import com.marius.valeyou_admin.di.fcm.Config;
 import com.marius.valeyou_admin.ui.activity.dashboard.aboutus.AboutUsFragment;
 import com.marius.valeyou_admin.ui.activity.dashboard.changepassword.ChangePasswordFragment;
 import com.marius.valeyou_admin.ui.activity.dashboard.helpnsupport.HelpAndSupportFragment;
@@ -73,6 +80,7 @@ public class MainActivity extends AppActivity<ActivityMainBinding, MainActivityV
         return intent;
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +93,7 @@ public class MainActivity extends AppActivity<ActivityMainBinding, MainActivityV
 
     @Override
     protected void subscribeToEvents(final MainActivityVM vm) {
+
         vm.base_back.observe(this, new Observer<Void>() {
             @Override
             public void onChanged(Void aVoid) {
@@ -297,7 +306,17 @@ public class MainActivity extends AppActivity<ActivityMainBinding, MainActivityV
 
     @Override
     public void onBackPressed() {
-        setExitDialog();
+        if (backStepFragment()) {
+                if (BackStackManager.getInstance(this).getCurrentTab() == "HomeFragment") {
+                    setExitDialog();
+                }else{
+                    changeFragment(HomeFragment.TAG);
+                }
+
+
+        }
+
+
 
     }
 
@@ -353,7 +372,7 @@ public class MainActivity extends AppActivity<ActivityMainBinding, MainActivityV
     }
 
 
-    /* load data in list */
+      /* load data in list */
     private List<MoreBean> getMoreData() {
         List<MoreBean> menuBeanList = new ArrayList<>();
         menuBeanList.add(new MoreBean(1, "Favourites", R.drawable.ic_favorite_icon));

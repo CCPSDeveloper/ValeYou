@@ -44,8 +44,8 @@
     <string name="code">Code</string>
     <string name="change_password">Change Password</string>
     <string name="account">Account</string>
-    <string name="age">Date Of Birth*</string>
-    <string name="address">Address</string>
+    <string name="age">Date Of Birth</string>
+    <string name="address">Address*</string>
     <string name="about">About</string>
     <string name="slect_resource">Select Category</string>
     <string name="my_services">My Services</string>
@@ -60,7 +60,7 @@
     <string name="identity">Upload Identity</string>
     <string name="deactivate_account">Deactivate Account</string>
     <string name="cancel">Cancel</string>
-    <string name="deactivate_description">If you are deactivating your account, make sure that you still have access to the email address you use to login. That way you can easily reactivate your accountby logging back in.</string>
+    <string name="deactivate_description">If you are deactivating your account, make sure that you still have access to the email address you use to login. That way you can easily reactivate your account by logging back in.</string>
     <string name="delete_description">Deleting your account will remove all of your information from our database.</string>
     <string name="delete_account">Delete Account</string>
     <string name="logout_account">Logout</string>
@@ -78,5 +78,6 @@
     <string name="facebook_app_id">2617191828542329</string>
     <string name="fb_login_protocol_scheme">fb2617191828542329</string>
 
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
 
 </resources>

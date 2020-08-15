@@ -42,8 +42,8 @@ public class HelpAndSupportFragment extends AppFragment<FragmentHelpSupportBindi
 
                     case R.id.tv_chat:
 
-                        Intent intent1 = ChatActivity.newIntent(getActivity());
-                        startNewActivity(intent1);
+                       // Intent intent1 = ChatActivity.newIntent(getActivity());
+                       // startNewActivity(intent1);
 
 
                         break;

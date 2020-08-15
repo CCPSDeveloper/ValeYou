@@ -84,7 +84,7 @@ public class SignupActivityVM extends BaseActivityViewModel {
     }
 
     public void verifyEmail(String email,String otp){
-        welcomeRepo.sendOTP(email).subscribeOn(Schedulers.io())
+        welcomeRepo.verifyEmail(email,otp).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribe(new SingleObserver<SimpleApiResponse>() {
             @Override
             public void onSubscribe(Disposable d) {

@@ -317,7 +317,7 @@
                     style="@style/TextViewStyleSubTitleRegular"
                     android:textColor="@color/grey"
                     android:padding="@dimen/dp10"
-                    android:text="Desciption"/>
+                    android:text="Description"/>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -329,8 +329,11 @@
                         android:id="@+id/et_desc"
                         android:layout_width="match_parent"
                         style="@style/EditText_Regular"
+                        android:layout_height="@dimen/dp100"
                         android:textColor="@color/grey"
                         android:padding="@dimen/dp10"
+                        android:textAlignment="textStart"
+                        android:gravity="top|left"
                         android:inputType="textCapSentences"
                         android:singleLine="true"
                         android:background="@color/full_transparent"

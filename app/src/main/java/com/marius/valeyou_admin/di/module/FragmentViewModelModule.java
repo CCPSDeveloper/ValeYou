@@ -3,6 +3,7 @@ package com.marius.valeyou_admin.di.module;
 import androidx.lifecycle.ViewModel;
 
 import com.marius.valeyou_admin.di.mapkey.ViewModelKey;
+import com.marius.valeyou_admin.ui.activity.LocationActivityVM;
 import com.marius.valeyou_admin.ui.activity.dashboard.aboutus.AboutUsFragmentVM;
 import com.marius.valeyou_admin.ui.activity.dashboard.helpnsupport.HelpAndSupportFragmentVM;
 import com.marius.valeyou_admin.ui.activity.dashboard.jobhistory.JobHistoryFragmentVM;
@@ -133,6 +134,11 @@ public abstract class FragmentViewModelModule {
     @IntoMap
     @ViewModelKey(CloseJobsFragmentVM.class)
     abstract ViewModel CloseJobsFragmentVM(CloseJobsFragmentVM vm);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(LocationActivityVM.class)
+    abstract ViewModel LocationActivityVM(LocationActivityVM vm);
 
 
 

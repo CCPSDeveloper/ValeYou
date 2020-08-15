@@ -95,10 +95,17 @@ public class NotificationActivity extends AppActivity<ActivityNotificationBindin
     }
 
     private void setRecyclerView(List<NotificationModel> list) {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        binding.rvNotification.setLayoutManager(layoutManager);
-        binding.rvNotification.setAdapter(adapter);
-        adapter.setList(list);
+        if (list.size()>0) {
+            binding.noTxt.setVisibility(View.GONE);
+            binding.rvNotification.setVisibility(View.VISIBLE);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+            binding.rvNotification.setLayoutManager(layoutManager);
+            binding.rvNotification.setAdapter(adapter);
+            adapter.setList(list);
+        }else{
+            binding.noTxt.setVisibility(View.VISIBLE);
+            binding.rvNotification.setVisibility(View.GONE);
+        }
     }
 
 

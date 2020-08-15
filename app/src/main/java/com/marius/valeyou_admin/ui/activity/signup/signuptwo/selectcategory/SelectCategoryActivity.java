@@ -16,14 +16,20 @@ import com.google.gson.JsonObject;
 import com.marius.valeyou_admin.R;
 import com.marius.valeyou_admin.data.beans.CatBean;
 import com.marius.valeyou_admin.data.beans.SubCatBean;
+import com.marius.valeyou_admin.data.beans.base.ApiResponse;
 import com.marius.valeyou_admin.data.beans.base.MoreBean;
 import com.marius.valeyou_admin.data.beans.categoriesBean.CategoryDataBean;
+import com.marius.valeyou_admin.data.beans.singninbean.SignInModel;
 import com.marius.valeyou_admin.data.remote.helper.Resource;
 import com.marius.valeyou_admin.databinding.ActivitySelectCategoryBinding;
 import com.marius.valeyou_admin.databinding.DialogSetPriceBinding;
 import com.marius.valeyou_admin.di.base.dialog.BaseCustomDialog;
 import com.marius.valeyou_admin.di.base.view.AppActivity;
+import com.marius.valeyou_admin.ui.activity.dashboard.profile.indentity.IdentityActivity;
+import com.marius.valeyou_admin.ui.activity.login.LoginActivity;
+import com.marius.valeyou_admin.ui.activity.main.MainActivity;
 import com.marius.valeyou_admin.ui.activity.signup.uploaddocument.UploadDocumentActivity;
+import com.marius.valeyou_admin.util.Constants;
 import com.marius.valeyou_admin.util.event.SingleRequestEvent;
 
 import java.io.Serializable;
@@ -103,6 +109,39 @@ public class SelectCategoryActivity extends AppActivity<ActivitySelectCategoryBi
             }
         });
 
+        vm.profilebeandata.observe(this, new Observer<Resource<ApiResponse<SignInModel>>>() {
+            @Override
+            public void onChanged(Resource<ApiResponse<SignInModel>> apiResponseResource) {
+                switch (apiResponseResource.status) {
+                    case LOADING:
+                        showProgressDialog(R.string.wait);
+                        break;
+                    case SUCCESS:
+                        dismissProgressDialog();
+
+                            Intent intent = IdentityActivity.newIntent(SelectCategoryActivity.this);
+                            intent.putExtra("auth_key",auth_key);
+                            intent.putExtra("comeFrom","cat");
+                            startNewActivity(intent,true);
+                            finishAffinity();
+                           /* Intent intent = MainActivity.newIntent(SelectCategoryActivity.this);
+                            startNewActivity(intent);
+                            finishAffinity();*/
+
+                        break;
+                    case ERROR:
+                        dismissProgressDialog();
+                        vm.error.setValue(apiResponseResource.message);
+                        break;
+                    case WARN:
+                        dismissProgressDialog();
+                        vm.warn.setValue(apiResponseResource.message);
+                        break;
+                }
+            }
+        });
+
+
         vm.base_click.observe(this, new Observer<View>() {
             @Override
             public void onChanged(View view) {
@@ -129,12 +168,13 @@ public class SelectCategoryActivity extends AppActivity<ActivitySelectCategoryBi
                         Gson gson = new Gson();
                         String category = gson.toJson(catList);
 
-                            Intent intent = UploadDocumentActivity.newIntent(SelectCategoryActivity.this);
+                           /* Intent intent = UploadDocumentActivity.newIntent(SelectCategoryActivity.this);
                             intent.putExtra("categoryList",category);
                             intent.putExtra("signupMap",map);
                             intent.putExtra("auth_key",auth_key);
                             startNewActivity(intent);
-
+*/                         map.put(Constants.SELECTED_DATA, category);
+                           vm.editProfile(auth_key,map);
                         }
 
 

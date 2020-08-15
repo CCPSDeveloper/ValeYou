@@ -22,7 +22,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.marius.valeyou_admin.R;
 import com.marius.valeyou_admin.data.beans.base.ApiResponse;

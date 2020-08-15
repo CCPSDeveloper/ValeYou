@@ -103,7 +103,9 @@ public class HomeFragment extends AppFragment<FragmentHomeBinding, HomeFragmentV
         if (!image.isEmpty()) {
             ImageViewBindingUtils.setProfilePicture(binding.profileIMG, "http://3.17.254.50:4999/upload/" + image);
         }
+
         getCurrentLocation();
+        Log.d("DeviceToke : ",viewModel.sharedPref.getUserData().getDeviceToken());
 
 
     }

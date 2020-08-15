@@ -14,7 +14,9 @@ import android.os.PersistableBundle;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -32,18 +34,27 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.marius.valeyou_admin.R;
+import com.marius.valeyou_admin.data.beans.base.SimpleApiResponse;
 import com.marius.valeyou_admin.data.beans.singninbean.SignInModel;
 import com.marius.valeyou_admin.data.beans.singninbean.SocialSignIn;
 import com.marius.valeyou_admin.data.local.SharedPref;
 import com.marius.valeyou_admin.data.remote.helper.Resource;
 import com.marius.valeyou_admin.databinding.ActivityLoginBinding;
+import com.marius.valeyou_admin.databinding.OtpBinding;
+import com.marius.valeyou_admin.di.base.dialog.BaseCustomDialog;
 import com.marius.valeyou_admin.di.base.view.AppActivity;
+import com.marius.valeyou_admin.di.fcm.Config;
 import com.marius.valeyou_admin.ui.activity.dashboard.DashBoardActivity;
 import com.marius.valeyou_admin.ui.activity.forgot.ForgotPasswordActivity;
 import com.marius.valeyou_admin.ui.activity.main.MainActivity;
 import com.marius.valeyou_admin.ui.activity.signup.SignupActivity;
+import com.marius.valeyou_admin.ui.activity.signup.signuptwo.SignupTwoActivity;
 import com.marius.valeyou_admin.util.Constants;
 import com.marius.valeyou_admin.util.event.SingleRequestEvent;
 import com.marius.valeyou_admin.util.location.LiveLocationDetecter;
@@ -68,6 +79,8 @@ import javax.inject.Inject;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
+
+import static android.content.ContentValues.TAG;
 
 public class LoginActivity extends AppActivity<ActivityLoginBinding, LoginActivityVM> {
 
@@ -101,8 +114,25 @@ public class LoginActivity extends AppActivity<ActivityLoginBinding, LoginActivi
     }
 
 
+
+
+
     @Override
     protected void subscribeToEvents(final LoginActivityVM vm) {
+        FirebaseMessaging.getInstance().setAutoInitEnabled(true);
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "getInstanceId failed", task.getException());
+                            return;
+                        }
+                        sharedPref.put(Constants.FCM_TOKEN, task.getResult().getToken());
+                    }
+                });
+
+
        /* boolean isRem = sharedPref.get("isRemeber",false);
 
         if (isRem){
@@ -171,7 +201,7 @@ public class LoginActivity extends AppActivity<ActivityLoginBinding, LoginActivi
                         map.put("email", binding.etEmail.getText().toString());
                         map.put("password", binding.etPassword.getText().toString());
                         map.put("device_type", "1");
-                        map.put("device_token", "xyz");
+                        map.put("device_token", sharedPref.get(Constants.FCM_TOKEN, "xyz"));
                         if (mCurrentlocation != null) {
                             map.put("latitude", String.valueOf(mCurrentlocation.getLatitude()));
                             map.put("longitude", String.valueOf(mCurrentlocation.getLongitude()));
@@ -206,6 +236,57 @@ public class LoginActivity extends AppActivity<ActivityLoginBinding, LoginActivi
                     break;
             }
         });
+
+        vm.sendOTPEvent.observe(this, new SingleRequestEvent.RequestObserver<SimpleApiResponse>() {
+            @Override
+            public void onRequestReceived(@NonNull Resource<SimpleApiResponse> resource) {
+                switch (resource.status) {
+                    case LOADING:
+                        break;
+                    case SUCCESS:
+                        vm.success.setValue(resource.message);
+                        break;
+                    case ERROR:
+                       vm.error.setValue(resource.message);
+                        break;
+                    case WARN:
+                        vm.warn.setValue(resource.message);
+                        break;
+                }
+            }
+        });
+
+
+        vm.verifyEmailEvent.observe(this, new SingleRequestEvent.RequestObserver<SimpleApiResponse>() {
+            @Override
+            public void onRequestReceived(@NonNull Resource<SimpleApiResponse> resource) {
+                switch (resource.status) {
+                    case LOADING:
+                        break;
+                    case SUCCESS:
+                        verificationDialog.dismiss();
+                        vm.success.setValue(resource.message);
+
+                        Intent intent = MainActivity.newIntent(LoginActivity.this);
+                        intent.putExtra("social", false);
+                        startNewActivity(intent,true);
+                        finishAffinity();
+
+                        break;
+                    case ERROR:
+                        if (resource.message.equalsIgnoreCase("bad request")){
+                            vm.error.setValue("Invalid OTP");
+                        }else{
+                            vm.error.setValue(resource.message);
+                        }
+                        break;
+                    case WARN:
+                        vm.warn.setValue(resource.message);
+                        break;
+                }
+            }
+        });
+
 
         vm.socialBean.observe(this, new SingleRequestEvent.RequestObserver<SignInModel>() {
             @Override
@@ -259,9 +340,17 @@ public class LoginActivity extends AppActivity<ActivityLoginBinding, LoginActivi
                         break;
                     case SUCCESS:
                         binding.setCheck(false);
-                        Intent intent1 = MainActivity.newIntent(LoginActivity.this);
-                        intent1.putExtra("social",false);
-                        startNewActivity(intent1, true, true);
+
+                       /* if (resource.data.getIsEmailVerify() ==0){
+
+                            verifyDialog(resource.data.getEmail());
+
+                        }else {*/
+                            Intent intent1 = MainActivity.newIntent(LoginActivity.this);
+                            intent1.putExtra("social", false);
+                            startNewActivity(intent1, true, true);
+
+                       // }
                         break;
                     case ERROR:
                         binding.setCheck(false);
@@ -444,6 +533,47 @@ public class LoginActivity extends AppActivity<ActivityLoginBinding, LoginActivi
                 Log.d("facebook: ","onError "+error);
             }
         });
+    }
+
+
+    private BaseCustomDialog<OtpBinding> verificationDialog;
+    private void verifyDialog(String email) {
+        verificationDialog = new BaseCustomDialog<>(LoginActivity.this, R.layout.otp, new BaseCustomDialog.Listener() {
+            @Override
+            public void onViewClick(View view) {
+                if (view != null && view.getId() != 0) {
+                    switch (view.getId()) {
+
+                        case R.id.iv_cancel:
+                            verificationDialog.dismiss();
+                            break;
+                        case R.id.btn_submit:
+                            if (!verificationDialog.getBinding().etOtp.getText().toString().isEmpty()){
+                                viewModel.verifyEmail(email,verificationDialog.getBinding().etOtp.getText().toString().trim());
+                            }else{
+                                viewModel.error.setValue("Enter OTP");
+                            }
+                            break;
+
+                        case R.id.resend_otp:
+                            if (!email.isEmpty()){
+                                viewModel.sendOTP(email);
+                            }else{
+                                viewModel.error.setValue("Something went wrong");
+                            }
+                            break;
+
+                    }
+                }
+            }
+        });
+        verificationDialog.getBinding().tvTwo.setText("Enter the OTP you recieve to \n"+email);
+        verificationDialog.setCancelable(true);
+        verificationDialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
+        verificationDialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        verificationDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        verificationDialog.show();
+
     }
 
 

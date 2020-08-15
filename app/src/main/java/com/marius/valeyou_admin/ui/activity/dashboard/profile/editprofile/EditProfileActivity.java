@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.view.View;
@@ -21,6 +23,7 @@ import com.marius.valeyou_admin.data.remote.helper.ApiUtils;
 import com.marius.valeyou_admin.data.remote.helper.Resource;
 import com.marius.valeyou_admin.databinding.ActivityEditProfileBinding;
 import com.marius.valeyou_admin.di.base.view.AppActivity;
+import com.marius.valeyou_admin.ui.activity.LocationActivity;
 import com.marius.valeyou_admin.ui.activity.dashboard.profile.ProfileActivity;
 import com.marius.valeyou_admin.ui.activity.dashboard.profile.certificate.AddCertificateActivity;
 import com.marius.valeyou_admin.ui.activity.login.LoginActivity;
@@ -35,6 +38,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -43,6 +47,7 @@ import okhttp3.RequestBody;
 public class EditProfileActivity extends AppActivity<ActivityEditProfileBinding, EditProfileActivityVM> {
 
     public static final int RESULT_GALLERY = 0;
+    public static final int RESULT_ADDRESS = 1;
     File file;
     String firstname;
     String lastname;
@@ -63,9 +68,15 @@ public class EditProfileActivity extends AppActivity<ActivityEditProfileBinding,
     }
 
 
+
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void subscribeToEvents(EditProfileActivityVM vm) {
+        binding.header.tvTitle.setTextColor(getResources().getColor(R.color.white));
+        binding.header.tvTitle.setText("Edit Profile");
+        binding.header.setCheck(true);
+        binding.header.tvTwo.setText("Save");
+
+
         firstname = viewModel.sharedPref.getUserData().getFirstName();
         lastname = viewModel.sharedPref.getUserData().getLastName();
         email = viewModel.sharedPref.getUserData().getEmail();
@@ -78,6 +89,7 @@ public class EditProfileActivity extends AppActivity<ActivityEditProfileBinding,
         String street= viewModel.sharedPref.getUserData().getStreet();
         String city = viewModel.sharedPref.getUserData().getCity();
         String dateofBirth = viewModel.sharedPref.getUserData().getDob();
+        String address = viewModel.sharedPref.getUserData().getAddress();
 
         String image = viewModel.sharedPref.getUserData().getImage();
         if (image!=null){
@@ -95,16 +107,8 @@ public class EditProfileActivity extends AppActivity<ActivityEditProfileBinding,
         binding.etHouseNumber.setText(houseNumber);
         binding.etStreet.setText(street);
         binding.etCity.setText(city);
+        binding.etAddress.setText(address);
         binding.etDateOfBirth.setText(dateofBirth);
-
-    }
-
-    @Override
-    protected void subscribeToEvents(EditProfileActivityVM vm) {
-        binding.header.tvTitle.setTextColor(getResources().getColor(R.color.white));
-        binding.header.tvTitle.setText("Edit Profile");
-        binding.header.setCheck(true);
-        binding.header.tvTwo.setText("Save");
 
         vm.base_back.observe(this, new Observer<Void>() {
             @Override
@@ -149,6 +153,10 @@ public class EditProfileActivity extends AppActivity<ActivityEditProfileBinding,
             public void onChanged(View view) {
                 switch (view != null ? view.getId() : 0) {
 
+                    case R.id.et_address:
+                        AllowLocationPermision();
+                        break;
+
                     case R.id.cv_gallaryBtn:
                         AllowPermision();
                         break;
@@ -168,6 +176,7 @@ public class EditProfileActivity extends AppActivity<ActivityEditProfileBinding,
                         String state = binding.etState.getText().toString();
                         String city = binding.etCity.getText().toString();
                         String dob = binding.etDateOfBirth.getText().toString();
+                        String address = binding.etAddress.getText().toString();
 
 
                         if (file==null){
@@ -185,7 +194,6 @@ public class EditProfileActivity extends AppActivity<ActivityEditProfileBinding,
                             strMap.put("zipCode",zipcode);
                             strMap.put("city",city);
                             strMap.put("dob",dob);
-
                             vm.editProfileSTr(authKey,strMap);
                         }else{
 
@@ -202,6 +210,7 @@ public class EditProfileActivity extends AppActivity<ActivityEditProfileBinding,
                         map.put("zipCode",toRequestBody(zipcode));
                         map.put("city",toRequestBody(city));
                             map.put("dob",toRequestBody(dob));
+                            map.put("address",toRequestBody(address));
 
 
                             MultipartBody.Part image = ApiUtils.createMultipartBodySingle(file);
@@ -225,6 +234,20 @@ public class EditProfileActivity extends AppActivity<ActivityEditProfileBinding,
             }
         });
     }
+
+    private void AllowLocationPermision(){
+        Permissions.check(this, Manifest.permission.ACCESS_FINE_LOCATION, 0, new PermissionHandler() {
+            @Override
+            public void onGranted() {
+
+                Intent intent = new Intent(EditProfileActivity.this,LocationActivity.class);
+                startActivityForResult(intent, 1);
+
+            }
+        });
+    }
+
+
 
 
     private void gallaryIntent(){
@@ -262,6 +285,19 @@ public class EditProfileActivity extends AppActivity<ActivityEditProfileBinding,
                     }
 
                 }
+                break;
+
+            case RESULT_ADDRESS:
+
+                String result=data.getStringExtra("address");
+                binding.etAddress.setText(result);
+                String city = data.getStringExtra("city");
+                String state = data.getStringExtra("state");
+                String zipcode = data.getStringExtra("zipcode");
+                binding.etCity.setText(city);
+                binding.etState.setText(state);
+                binding.etZipCode.setText(zipcode);
+
                 break;
             default:
                 break;

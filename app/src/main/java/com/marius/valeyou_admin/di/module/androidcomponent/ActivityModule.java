@@ -1,5 +1,6 @@
 package com.marius.valeyou_admin.di.module.androidcomponent;
 
+import com.marius.valeyou_admin.ui.activity.LocationActivity;
 import com.marius.valeyou_admin.ui.activity.dashboard.DashBoardActivity;
 import com.marius.valeyou_admin.ui.activity.dashboard.changepassword.ChangePasswordFragment;
 import com.marius.valeyou_admin.ui.activity.dashboard.jobhistory.currentjob.jobdetailsone.JobDetailsOneActivity;
@@ -142,6 +143,9 @@ public abstract class ActivityModule {
 
     @ContributesAndroidInjector
     abstract AddExperienceActivity addExperienceActivity();
+
+    @ContributesAndroidInjector
+    abstract LocationActivity locationActivity();
 
 
 }

@@ -286,13 +286,13 @@
 
             <Button
                 android:id="@+id/btn_start_end_job"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/dp45"
-                android:layout_weight="1"
                 android:layout_gravity="center_vertical"
                 style="@style/RectangleButtonStyle"
                 android:onClick="@{(v)->vm.onClick(v)}"
                 android:text="Start Job"
+                android:layout_marginTop="@dimen/dp10"
                 android:layout_margin="@dimen/dp10"
                 android:textColor="@color/white"
                 android:foreground="?selectableItemBackground"
@@ -307,6 +307,7 @@
                 style="@style/RectangleButtonStyle"
                 android:onClick="@{(v)->vm.onClick(v)}"
                 android:text="Chat"
+                android:visibility="gone"
                 android:layout_margin="@dimen/dp10"
                 android:background="@drawable/back_round_corner7"
                 android:backgroundTint="?textColorTheme"

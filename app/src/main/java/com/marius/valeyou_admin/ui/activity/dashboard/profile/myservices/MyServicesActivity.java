@@ -103,14 +103,14 @@ public class MyServicesActivity extends AppActivity<ActivityMyServicesBinding,My
     protected void subscribeToEvents(MyServicesActivityVM vm) {
         binding.header.tvTitle.setText(R.string.my_services);
 
-        Intent intent = getIntent();
+       /* Intent intent = getIntent();
         if (intent!=null){
 
             Bundle args = intent.getBundleExtra("BUNDLE");
             List<ProfileModel.ProviderCategoriesBean> list = (ArrayList<ProfileModel.ProviderCategoriesBean>) args.getSerializable("categoriesBean");
 
             Toast.makeText(this, ""+list.size(), Toast.LENGTH_SHORT).show();
-        }
+        }*/
 
 
 

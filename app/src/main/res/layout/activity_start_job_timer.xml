@@ -221,22 +221,46 @@
             </LinearLayout>
 
 
-
-
-            <Button
-                android:id="@+id/btn_end_job"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp45"
-                android:gravity="center"
-                android:layout_marginRight="@dimen/dp30"
-                android:layout_marginLeft="@dimen/dp30"
-                android:background="@color/colorPrimary"
-                android:layout_gravity="bottom"
-                android:onClick="@{(v)->vm.onClick(v)}"
-                android:text="End Job"
-                android:textColor="@color/white"
-                android:foreground="?selectableItemBackground"
-                android:textSize="@dimen/sp14" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_below="@+id/cv_two">
+
+                <Button
+                    android:id="@+id/btn_end_job"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="@dimen/dp45"
+                    android:layout_gravity="center_vertical"
+                    style="@style/RectangleButtonStyle"
+                    android:onClick="@{(v)->vm.onClick(v)}"
+                    android:text="End Job"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:layout_margin="@dimen/dp10"
+                    android:textColor="@color/white"
+                    android:foreground="?selectableItemBackground"
+                    android:textSize="@dimen/sp14" />
+
+                <Button
+                    android:id="@+id/btn_chat"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp45"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    style="@style/RectangleButtonStyle"
+                    android:onClick="@{(v)->vm.onClick(v)}"
+                    android:text="Chat"
+                    android:visibility="visible"
+                    android:layout_margin="@dimen/dp10"
+                    android:background="@drawable/back_round_corner7"
+                    android:backgroundTint="?textColorTheme"
+                    android:foreground="?selectableItemBackground"
+                    android:textSize="@dimen/sp14" />
+
+            </LinearLayout>
+
 
         </LinearLayout>
 

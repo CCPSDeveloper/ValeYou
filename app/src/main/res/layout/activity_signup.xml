@@ -13,6 +13,7 @@
         <variable
             name="vm"
             type="com.marius.valeyou_admin.ui.activity.signup.SignupActivityVM" />
+
     </data>
 
     <FrameLayout

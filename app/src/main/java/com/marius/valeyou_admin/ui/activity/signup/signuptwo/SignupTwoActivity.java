@@ -19,6 +19,7 @@ import com.bruce.pickerview.popwindow.DatePickerPopWin;
 import com.marius.valeyou_admin.R;
 import com.marius.valeyou_admin.databinding.ActivitySignupTwoBinding;
 import com.marius.valeyou_admin.di.base.view.AppActivity;
+import com.marius.valeyou_admin.ui.activity.LocationActivity;
 import com.marius.valeyou_admin.ui.activity.signup.SignupActivity;
 import com.marius.valeyou_admin.ui.activity.signup.signuptwo.selectcategory.SelectCategoryActivity;
 import com.marius.valeyou_admin.util.Constants;
@@ -34,6 +35,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -91,6 +93,11 @@ public class SignupTwoActivity extends AppActivity<ActivitySignupTwoBinding, Sig
                         datePicker().show();
                         break;
 
+                    case R.id.et_address:
+                        Intent intent1 = new Intent(SignupTwoActivity.this,LocationActivity.class);
+                        startActivityForResult(intent1,1);
+                        break;
+
                     case R.id.btnSignup:
 
                             hashMap = new HashMap<>();
@@ -102,20 +109,24 @@ public class SignupTwoActivity extends AppActivity<ActivitySignupTwoBinding, Sig
                             String city = binding.etCity.getText().toString();
                             String state = binding.etState.getText().toString();
                             String des = binding.etDescription.getText().toString();
+                            String address = binding.etAddress.getText().toString();
 
-                            if (dob.isEmpty()) {
-                                vm.error.setValue("Please choose date of birth");
-                            }else   if (city.isEmpty()){
-                                vm.error.setValue("Please enter city");
-
-                            }else   if (state.isEmpty()){
-                                vm.error.setValue("Please enter state");
-
+                            if (address.isEmpty()) {
+                                vm.error.setValue("Please select address");
                             }else{
 
-                                hashMap.put(Constants.DOB,dob);
-                                hashMap.put(Constants.CITY,city);
-                                hashMap.put(Constants.STATE,state);
+
+                                if (!dob.isEmpty()){
+                                    hashMap.put(Constants.DOB,dob);
+                                }
+
+                                if (!city.isEmpty()){
+                                    hashMap.put(Constants.CITY,city);
+                                }
+
+                                if (!state.isEmpty()){
+                                    hashMap.put(Constants.STATE,state);
+                                }
 
                                 if (!houseNumber.isEmpty()){
                                     hashMap.put(Constants.HOUSE_NUMBER,houseNumber);
@@ -139,6 +150,7 @@ public class SignupTwoActivity extends AppActivity<ActivitySignupTwoBinding, Sig
                                     hashMap.put(Constants.DESCRIPTION,des);
                                 }
 
+                                hashMap.put(Constants.ADDRESS,address);
                                 intent = SelectCategoryActivity.newIntent(SignupTwoActivity.this);
                                 intent.putExtra("signupMap", (Serializable) hashMap);
                                 intent.putExtra("auth_key",auth_key);
@@ -229,5 +241,24 @@ public class SignupTwoActivity extends AppActivity<ActivitySignupTwoBinding, Sig
 
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode){
+
+            case 1:
+                String result=data.getStringExtra("address");
+                binding.etAddress.setText(result);
+                String city = data.getStringExtra("city");
+                String state = data.getStringExtra("state");
+                String zipcode = data.getStringExtra("zipcode");
+                binding.etCity.setText(city);
+                binding.etState.setText(state);
+                binding.etZipCode.setText(zipcode);
+
+                break;
+        }
     }
 }

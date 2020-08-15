@@ -97,11 +97,20 @@ public class SignInModel {
     private String paypalId;
     private String createdAt;
     private String updatedAt;
+    private int isEmailVerify;
     private List<ProviderPortfoliosBean> providerPortfolios;
     private List<ProviderLanguagesBean> providerLanguages;
     private List<?> certificates;
     private List<?> business_hours;
     private List<ProviderCategoriesBean> providerCategories;
+
+    public int getIsEmailVerify() {
+        return isEmailVerify;
+    }
+
+    public void setIsEmailVerify(int isEmailVerify) {
+        this.isEmailVerify = isEmailVerify;
+    }
 
     public int getId() {
         return id;

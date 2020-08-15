@@ -248,7 +248,7 @@
                             android:maxLines="1"
                             android:gravity="center_vertical"
                             android:drawablePadding="@dimen/dp10"
-                            android:hint="I/24,st Road Head, USA"
+                            android:hint="What are you looking for?"
                             android:textSize="@dimen/sp14"
                             />
                     </androidx.cardview.widget.CardView>
